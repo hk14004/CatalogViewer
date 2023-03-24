@@ -21,6 +21,30 @@ struct CategoriesScreenView: View {
 extension CategoriesScreenView {
     @ViewBuilder
     private func makeCategoriesListView() -> some View {
-        Text("LiST?")
+        List(viewModel.sections, id: \.uuid) { section in
+            Section {
+                ForEach(section.cells, id: \.self) { cell in
+                    switch cell {
+                    case .categoryItem(let item):
+                        makeCategoryListItemView(item: item)
+                            .onTapGesture {
+                                viewModel.onCategoryTapped(item: item)
+                            }
+                    }
+                }
+            } header: {
+                Text(section.title)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func makeCategoryListItemView(item: Category) -> some View {
+        HStack {
+            Text(item.title)
+            Spacer()
+            Image(systemName: "chevron.right")
+        }
+        .contentShape(Rectangle()) 
     }
 }

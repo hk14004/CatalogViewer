@@ -14,3 +14,6 @@ struct Category {
     let size: String
     let title: String
 }
+
+extension Category: Equatable {}
+extension Category: Hashable {}
