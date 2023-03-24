@@ -22,6 +22,9 @@
 		D40BC2FD29CE29BA00B4A1E2 /* CategoriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2FC29CE29BA00B4A1E2 /* CategoriesCoordinator.swift */; };
 		D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30129CE2CBB00B4A1E2 /* CategoriesScreenVM.swift */; };
 		D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30329CE2CD500B4A1E2 /* CategoriesScreenView.swift */; };
+		D40BC30829CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30729CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift */; };
+		D40BC30A29CE3CD900B4A1E2 /* CategoryProductsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30929CE3CD900B4A1E2 /* CategoryProductsScreenView.swift */; };
+		D40BC30E29CE487300B4A1E2 /* String + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30D29CE487300B4A1E2 /* String + ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		D40BC2FC29CE29BA00B4A1E2 /* CategoriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCoordinator.swift; sourceTree = "<group>"; };
 		D40BC30129CE2CBB00B4A1E2 /* CategoriesScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenVM.swift; sourceTree = "<group>"; };
 		D40BC30329CE2CD500B4A1E2 /* CategoriesScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenView.swift; sourceTree = "<group>"; };
+		D40BC30729CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductsScreenVM.swift; sourceTree = "<group>"; };
+		D40BC30929CE3CD900B4A1E2 /* CategoryProductsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductsScreenView.swift; sourceTree = "<group>"; };
+		D40BC30D29CE487300B4A1E2 /* String + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 				D40BC2F829CE286000B4A1E2 /* Navigation */,
 				D40BC2FE29CE2C5500B4A1E2 /* UI */,
 				D40BC2EF29CE253100B4A1E2 /* Data */,
+				D40BC30B29CE485300B4A1E2 /* Extensions */,
 				D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */,
 				D40BC2DB29CE1E1400B4A1E2 /* LaunchScreen.storyboard */,
 				D40BC2DE29CE1E1400B4A1E2 /* Info.plist */,
@@ -163,10 +170,36 @@
 		D40BC30029CE2C8B00B4A1E2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D40BC30129CE2CBB00B4A1E2 /* CategoriesScreenVM.swift */,
-				D40BC30329CE2CD500B4A1E2 /* CategoriesScreenView.swift */,
+				D40BC30629CE3C6D00B4A1E2 /* CategoryProductsScreen */,
+				D40BC30529CE3C0700B4A1E2 /* CategoriesScreen */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		D40BC30529CE3C0700B4A1E2 /* CategoriesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC30329CE2CD500B4A1E2 /* CategoriesScreenView.swift */,
+				D40BC30129CE2CBB00B4A1E2 /* CategoriesScreenVM.swift */,
+			);
+			path = CategoriesScreen;
+			sourceTree = "<group>";
+		};
+		D40BC30629CE3C6D00B4A1E2 /* CategoryProductsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC30729CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift */,
+				D40BC30929CE3CD900B4A1E2 /* CategoryProductsScreenView.swift */,
+			);
+			path = CategoryProductsScreen;
+			sourceTree = "<group>";
+		};
+		D40BC30B29CE485300B4A1E2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC30D29CE487300B4A1E2 /* String + ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,8 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40BC30E29CE487300B4A1E2 /* String + ext.swift in Sources */,
 				D40BC2FA29CE288300B4A1E2 /* AppCoordinator.swift in Sources */,
 				D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */,
+				D40BC30A29CE3CD900B4A1E2 /* CategoryProductsScreenView.swift in Sources */,
+				D40BC30829CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVM.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,

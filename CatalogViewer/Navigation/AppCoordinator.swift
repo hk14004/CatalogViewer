@@ -20,7 +20,7 @@ class AppCoordinator: NavigationCoordinator {
     var children: [NavigationCoordinator] = []
     
     func start() {
-        router.navigationController.navigationBar.isHidden = true
+//        router.navigationController.navigationBar.isHidden = true
         goToInitialScreen()
         window.rootViewController = router.navigationController
     }

@@ -23,6 +23,7 @@ class CategoriesScreenVM: ObservableObject {
     
     enum Cell: Hashable {
         case categoryItem(Category)
+        case redactedRow
     }
     
     struct Section: UISectionModelProtocol {
@@ -42,7 +43,6 @@ class CategoriesScreenVM: ObservableObject {
         var categoriesHandle: AnyCancellable?
     }
     
-    
     // MARK: Properties
     
     // Public
@@ -51,7 +51,7 @@ class CategoriesScreenVM: ObservableObject {
     
     // Private
     private let bag = Bag()
-    private var loadedCategories: [Category] = []
+    private var loadedCategories: [Category]?
     
     // MARK: Init
     
@@ -79,8 +79,14 @@ extension CategoriesScreenVM {
         ]
     }
     
-    private func makeCategoriesListSection(items: [Category]) -> Section {
-        let cells: [Cell] = items.map({Cell.categoryItem($0)})
+    private func makeCategoriesListSection(items: [Category]?) -> Section {
+        let cells: [Cell] = {
+            guard let loadedCategories = items else {
+                return makeRedactedCells(count: 9)
+            }
+            let loadedCells = loadedCategories.map({Cell.categoryItem($0)})
+            return loadedCells
+        }()
         let section = Section(uuid: SectionIdentifiers.categoriesList.rawValue,
                               title: "Categories", cells: cells)
         return section
@@ -93,4 +99,11 @@ extension CategoriesScreenVM {
         ]
     }
     
+    private func makeRedactedCells(count: Int) -> [Cell]{
+        var cells: [Cell] = []
+        for _ in 0...count - 1 {
+            cells.append(.redactedRow)
+        }
+        return cells
+    }
 }

@@ -30,6 +30,16 @@ class CategoriesCoordinator: NavigationCoordinator {
 
 extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
     func categoriesScreenVM(vm: CategoriesScreenVM, didSelectCategory category: Category) {
-        print("GOTO")
+        goToCategory(item: category)
+    }
+}
+
+// MARK: Private
+
+extension CategoriesCoordinator {
+    private func goToCategory(item: Category) {
+        let vm = CategoryProductsScreenVM(category: item)
+        let vc = UIHostingController(rootView: CategoryProductsScreenView(viewModel: vm))
+        router.navigationController.pushViewController(vc, animated: true)
     }
 }

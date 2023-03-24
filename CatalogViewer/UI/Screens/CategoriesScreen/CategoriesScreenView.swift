@@ -13,7 +13,7 @@ struct CategoriesScreenView: View {
     
     var body: some View {
         makeCategoriesListView()
-            .navigationTitle("Categories list")
+            .navigationTitle("Browse")
     }
     
 }
@@ -30,6 +30,8 @@ extension CategoriesScreenView {
                             .onTapGesture {
                                 viewModel.onCategoryTapped(item: item)
                             }
+                    case .redactedRow:
+                        makeRedactedRow()
                     }
                 }
             } header: {
@@ -45,6 +47,14 @@ extension CategoriesScreenView {
             Spacer()
             Image(systemName: "chevron.right")
         }
-        .contentShape(Rectangle()) 
+        .contentShape(Rectangle())
+    }
+    
+    @ViewBuilder
+    private func makeRedactedRow() -> some View {
+        let random = String.random(of: 30)
+        let redacted = Category(id: "", parentID: "", imageURL: "", size: "", title: random)
+        makeCategoryListItemView(item: redacted)
+            .redacted(reason: .placeholder)
     }
 }
