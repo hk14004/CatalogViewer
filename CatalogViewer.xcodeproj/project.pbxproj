@@ -13,6 +13,13 @@
 		D40BC2D829CE1E1300B4A1E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2D629CE1E1300B4A1E2 /* Main.storyboard */; };
 		D40BC2DA29CE1E1400B4A1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */; };
 		D40BC2DD29CE1E1400B4A1E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2DB29CE1E1400B4A1E2 /* LaunchScreen.storyboard */; };
+		D40BC2E629CE212700B4A1E2 /* DevTools in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E529CE212700B4A1E2 /* DevTools */; };
+		D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */; };
+		D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */; };
+		D40BC2EC29CE212700B4A1E2 /* DevToolsRealm in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */; };
+		D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2ED29CE212700B4A1E2 /* DevToolsUI */; };
+		D40BC2F429CE259800B4A1E2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F329CE259800B4A1E2 /* Category.swift */; };
+		D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F629CE261900B4A1E2 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,8 @@
 		D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D40BC2DC29CE1E1400B4A1E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D40BC2DE29CE1E1400B4A1E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D40BC2F329CE259800B4A1E2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D40BC2F629CE261900B4A1E2 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +40,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */,
+				D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */,
+				D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */,
+				D40BC2EC29CE212700B4A1E2 /* DevToolsRealm in Frameworks */,
+				D40BC2E629CE212700B4A1E2 /* DevTools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +70,7 @@
 		D40BC2CF29CE1E1300B4A1E2 /* CatalogViewer */ = {
 			isa = PBXGroup;
 			children = (
+				D40BC2EF29CE253100B4A1E2 /* Data */,
 				D40BC2D029CE1E1300B4A1E2 /* AppDelegate.swift */,
 				D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */,
 				D40BC2D429CE1E1300B4A1E2 /* ViewController.swift */,
@@ -65,6 +80,47 @@
 				D40BC2DE29CE1E1400B4A1E2 /* Info.plist */,
 			);
 			path = CatalogViewer;
+			sourceTree = "<group>";
+		};
+		D40BC2EF29CE253100B4A1E2 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC2F029CE253D00B4A1E2 /* Models */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D40BC2F029CE253D00B4A1E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC2F129CE255100B4A1E2 /* Domain */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D40BC2F129CE255100B4A1E2 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC2F529CE260200B4A1E2 /* Product */,
+				D40BC2F229CE257600B4A1E2 /* Category */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D40BC2F229CE257600B4A1E2 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC2F329CE259800B4A1E2 /* Category.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		D40BC2F529CE260200B4A1E2 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC2F629CE261900B4A1E2 /* Product.swift */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +139,13 @@
 			dependencies = (
 			);
 			name = CatalogViewer;
+			packageProductDependencies = (
+				D40BC2E529CE212700B4A1E2 /* DevTools */,
+				D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */,
+				D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */,
+				D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */,
+				D40BC2ED29CE212700B4A1E2 /* DevToolsUI */,
+			);
 			productName = CatalogViewer;
 			productReference = D40BC2CD29CE1E1300B4A1E2 /* CatalogViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +174,9 @@
 				Base,
 			);
 			mainGroup = D40BC2C429CE1E1300B4A1E2;
+			packageReferences = (
+				D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */,
+			);
 			productRefGroup = D40BC2CE29CE1E1300B4A1E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -140,7 +206,9 @@
 			files = (
 				D40BC2D529CE1E1300B4A1E2 /* ViewController.swift in Sources */,
 				D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */,
+				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
 				D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */,
+				D40BC2F429CE259800B4A1E2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +426,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hk14004/DevTools-Swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D40BC2E529CE212700B4A1E2 /* DevTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevTools;
+		};
+		D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsNavigation;
+		};
+		D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsNetworking;
+		};
+		D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsRealm;
+		};
+		D40BC2ED29CE212700B4A1E2 /* DevToolsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D40BC2C529CE1E1300B4A1E2 /* Project object */;
 }
