@@ -52,7 +52,7 @@ extension CategoriesScreenView {
     
     @ViewBuilder
     private func makeRedactedRow() -> some View {
-        let random = String.random(of: 30)
+        let random = String.random(of: Int.random(in: 5...25))
         let redacted = Category(id: "", parentID: "", imageURL: "", size: "", title: random)
         makeCategoryListItemView(item: redacted)
             .redacted(reason: .placeholder)

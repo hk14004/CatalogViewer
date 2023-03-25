@@ -23,7 +23,7 @@ class CategoriesScreenVM: ObservableObject {
     
     enum Cell: Hashable {
         case categoryItem(Category)
-        case redactedRow
+        case redactedRow(uuid: String)
     }
     
     struct Section: UISectionModelProtocol {
@@ -56,7 +56,7 @@ class CategoriesScreenVM: ObservableObject {
     // MARK: Init
     
     init() {
-        loadedCategories = makeTestItems()
+//        loadedCategories = makeTestItems()
         sections = makeSections()
     }
     
@@ -102,7 +102,7 @@ extension CategoriesScreenVM {
     private func makeRedactedCells(count: Int) -> [Cell]{
         var cells: [Cell] = []
         for _ in 0...count - 1 {
-            cells.append(.redactedRow)
+            cells.append(.redactedRow(uuid: UUID().uuidString))
         }
         return cells
     }

@@ -19,7 +19,7 @@ class CategoriesCoordinator: NavigationCoordinator {
         vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoriesScreenView(viewModel: vm))
         router.push(vc, isAnimated: true, onNavigateBack: onFree)
-        goToCategory(item: .init(id: "", parentID: "", imageURL: "", size: "", title: ""))
+//        goToCategory(item: .init(id: "", parentID: "", imageURL: "", size: "", title: ""))
     }
     
     init(router: RouterProtocol) {
