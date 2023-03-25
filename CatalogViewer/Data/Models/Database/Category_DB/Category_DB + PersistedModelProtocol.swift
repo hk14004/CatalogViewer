@@ -10,7 +10,7 @@ import DevTools
 
 extension Category_DB: PersistedModelProtocol {
         
-    enum PersistedField: PersistedModelFieldProtocol {
+    enum PersistedField: String, PersistedModelFieldProtocol {
         case id
         case parentID
         case imageURL

@@ -54,7 +54,8 @@ extension CategoryRepository: CategoryRepositoryProtocol {
     }
     
     func observeCategories() -> AnyPublisher<[Category], Never> {
-        categoriesStore.observeList()
+        categoriesStore.observeList(sortedByKeyPath: Category_DB.PersistedField.title.rawValue,
+                                    ascending: true)
     }
     
 }
