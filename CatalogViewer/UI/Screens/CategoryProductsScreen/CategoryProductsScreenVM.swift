@@ -49,16 +49,51 @@ class CategoryProductsScreenVM: ObservableObject {
     private let bag = Bag()
     private var loadedProducts: [Product]?
     private let category: Category
+    private let productsRepository: ProductRepositoryProtocol
     
-    init(category: Category) {
+    init(category: Category, productsRepository: ProductRepositoryProtocol) {
         self.category = category
-        loadedProducts = makeTestItems()
+        self.productsRepository = productsRepository
         sections = makeSections()
+        refreshRemoteData()
+        observeLocalData()
     }
     
 }
 
 extension CategoryProductsScreenVM {
+    private func refreshRemoteData() {
+        productsRepository.refreshProducts(categoryIds: [category.id]) {
+            print("Refreshed products")
+        }
+    }
+    
+    private func observeLocalData() {
+        bag.productsHandle = productsRepository.observeProducts(categoryIds: [category.id]).removeDuplicates().sink { [weak self] _products in
+            self?.onLocalProductsUpdated(list: _products)
+        }
+    }
+    
+    private func onLocalProductsUpdated(list: [Product]) {
+        func onUpdateUI() {
+            let updatedSection = makeProductListSection(items: loadedProducts)
+            sections.update(section: updatedSection)
+        }
+        
+        let initialLoad: Bool = loadedProducts == nil
+        loadedProducts = list
+        
+        // Update UI
+        
+        if initialLoad {
+            onUpdateUI()
+        } else {
+            withAnimation {
+                onUpdateUI()
+            }
+        }
+    }
+    
     private func makeSections() -> [Section] {
         [
             makeProductListSection(items: loadedProducts)
@@ -76,15 +111,6 @@ extension CategoryProductsScreenVM {
         let section = Section(uuid: SectionIdentifiers.productsGrid.rawValue,
                               title: "Featured", cells: cells)
         return section
-    }
-    
-    private func makeTestItems() -> [Product] {
-        [
-            .init(id: "1", mainCategoryID: "", type: "", typeName: "", title: "ggg", brand: "", model: "", image: "https://s3.staging.printful.com/upload/catalog_category/b1/b1513c82696405fcc316fc611c57f132_t?v=1646395980", variantCount: "", currencyID: ""),
-            .init(id: "2", mainCategoryID: "", type: "", typeName: "", title: "qwert", brand: "", model: "", image: "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200", variantCount: "", currencyID: ""),
-            .init(id: "3", mainCategoryID: "", type: "", typeName: "", title: "ggg", brand: "", model: "", image: "https://s3.staging.printful.com/upload/catalog_category/b1/b1513c82696405fcc316fc611c57f132_t?v=1646395980", variantCount: "", currencyID: ""),
-            .init(id: "4", mainCategoryID: "", type: "", typeName: "", title: "qwert", brand: "", model: "", image: "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=1200", variantCount: "", currencyID: "")
-        ]
     }
     
     private func makeRedactedCells(count: Int) -> [Cell]{

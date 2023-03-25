@@ -12,7 +12,7 @@ import DevToolsRealm
 import Moya
 import DevToolsNetworking
 
-let DEPENDENCIES: Container = {
+let DI: Container = {
     let container = Container()
     
     // MARK: Data
@@ -22,6 +22,9 @@ let DEPENDENCIES: Container = {
     container.register(PersistentRealmStore<Category>.self) { resolver in
         PersistentRealmStore(realm: resolver.resolve(Realm.self)!)
     }
+    container.register(PersistentRealmStore<Product>.self) { resolver in
+        PersistentRealmStore(realm: resolver.resolve(Realm.self)!)
+    }
     
     // Providers
     container.register(CatalogProviderProtocol.self) { resolver in
@@ -29,10 +32,20 @@ let DEPENDENCIES: Container = {
                         requestManager: RequestManager<CatalogTarget>())
     }
     
+    // Data mappers
+    container.register(ProductResponseMapperProtocol.self) { resolver in
+        ProductResponseMapper()
+    }
+    
     // Repositories
     container.register(CategoryRepositoryProtocol.self) { resolver in
         CategoryRepository(remoteProvider: resolver.resolve(CatalogProviderProtocol.self)!,
                            categoriesStore:  resolver.resolve(PersistentRealmStore<Category>.self)!)
+    }
+    container.register(ProductRepositoryProtocol.self) { resolver in
+        ProductRepository(remoteProvider: resolver.resolve(CatalogProviderProtocol.self)!,
+                          store: resolver.resolve(PersistentRealmStore<Product>.self)!,
+                          mapper: resolver.resolve(ProductResponseMapperProtocol.self)!)
     }
     
     return container

@@ -15,7 +15,7 @@ class CategoriesCoordinator: NavigationCoordinator {
     var children: [NavigationCoordinator] = []
     
     func start() {
-        let vm = CategoriesScreenVM(categoryRepository: DEPENDENCIES.resolve(CategoryRepositoryProtocol.self)!)
+        let vm = CategoriesScreenVM(categoryRepository: DI.resolve(CategoryRepositoryProtocol.self)!)
         vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoriesScreenView(viewModel: vm))
         router.push(vc, isAnimated: true, onNavigateBack: onFree)
@@ -39,7 +39,8 @@ extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
 
 extension CategoriesCoordinator {
     private func goToCategory(item: Category) {
-        let vm = CategoryProductsScreenVM(category: item)
+        let vm = CategoryProductsScreenVM(category: item,
+                                          productsRepository: DI.resolve(ProductRepositoryProtocol.self)!)
         let vc = UIHostingController(rootView: CategoryProductsScreenView(viewModel: vm))
         router.navigationController.pushViewController(vc, animated: true)
     }

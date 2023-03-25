@@ -27,21 +27,25 @@ struct CategoryProductsScreenView: View {
 extension CategoryProductsScreenView {
     @ViewBuilder
     private func makeProductsGridSection(section: CategoryProductsScreenVM.Section) -> some View {
-        let columns = [
-            GridItem(.flexible(), spacing: 20),
-            GridItem(.flexible(), spacing: 0)
-        ]
-        
+        let columns: [GridItem] = {
+            if section.cells.count > 1 {
+                return [
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 0)
+                ]
+            } else {
+                return [GridItem(.flexible(), spacing: 0)]
+            }
+        }()
         Section {
-            ScrollView {
-                LazyVGrid(columns: columns, spacing: 0) {
-                    ForEach(section.cells, id: \.self) { cell in
-                        switch cell {
-                        case .productGridItem(let item):
-                            makeProductGridItemView(item: item)
-                        case .redactedItem:
-                            makeProductGridItemViewRedacted()
-                        }
+            LazyVGrid(columns: columns, spacing: 0) {
+                ForEach(section.cells, id: \.self) { cell in
+                    switch cell {
+                    case .productGridItem(let item):
+                        makeProductGridItemView(item: item)
+                            .padding(.top, 6)
+                    case .redactedItem:
+                        makeProductGridItemViewRedacted()
                     }
                 }
             }
@@ -52,7 +56,7 @@ extension CategoryProductsScreenView {
     
     @ViewBuilder
     private func makeProductGridItemView(item: Product) -> some View {
-        VStack() {
+        VStack(alignment: .leading, spacing: 0) {
             Rectangle()
                 .foregroundColor(.clear)
                 .aspectRatio(1, contentMode: .fit)
@@ -63,10 +67,15 @@ extension CategoryProductsScreenView {
                         .clipped()
                 }
                 .cornerRadius(12)
+                .layoutPriority(2)
+            Spacer()
             Text(item.title)
                 .fontWeight(.medium)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+                .layoutPriority(1)
+            Spacer()
         }
-        .padding(.top)
     }
     
     @ViewBuilder

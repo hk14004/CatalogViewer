@@ -9,7 +9,7 @@ import DevTools
 
 extension Product_DB: PersistedModelProtocol {
         
-    enum PersistedField: PersistedModelFieldProtocol {
+    enum PersistedField: String, PersistedModelFieldProtocol {
         case mainCategoryID
         case type
         case typeName

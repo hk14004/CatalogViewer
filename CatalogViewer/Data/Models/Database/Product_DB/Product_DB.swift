@@ -19,7 +19,7 @@ class Product_DB: Object {
     @Persisted var brand: String
     @Persisted var model: String
     @Persisted var image: String
-    @Persisted var variantCount: String
+    @Persisted var variantCount: Int
     @Persisted var currencyID: String
     
 }

@@ -12,5 +12,6 @@ enum CatalogProviderError: Swift.Error {
     case alreadyRunning
     case responseDecodeIssue
     case fetchFailed(code: Int)
+    case userError(description: String)
     
 }

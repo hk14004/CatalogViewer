@@ -16,7 +16,7 @@ struct Product {
     let brand: String
     let model: String
     let image: String
-    let variantCount: String
+    let variantCount: Int
     let currencyID: String
     
     // Files?

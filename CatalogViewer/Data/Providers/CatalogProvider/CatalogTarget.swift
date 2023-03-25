@@ -13,6 +13,7 @@ struct CatalogTarget: RequestManagerTarget {
     
     enum Endpoint: String, CaseIterable {
         case getCategories
+        case getProducts
     }
     
     var endpoint: Endpoint
@@ -37,12 +38,16 @@ struct CatalogTarget: RequestManagerTarget {
         switch endpoint {
         case .getCategories:
             return "/categories"
+        case .getProducts:
+            return "/products"
         }
     }
     
     var method: Moya.Method {
         switch endpoint {
         case .getCategories:
+            return .get
+        case .getProducts:
             return .get
         }
     }

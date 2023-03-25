@@ -47,7 +47,9 @@ extension CategoryRepository: CategoryRepositoryProtocol {
                 }
                 self?.categoriesStore.replace(with: items)
                 completion()
-            case .failure(_):
+            case .failure(let providerError):
+                // TODO: Handle error if needed
+                print(providerError)
                 completion()
             }
         }
