@@ -23,3 +23,6 @@ struct Product {
     // Options?
     // Techniques?
 }
+
+extension Product: Equatable {}
+extension Product: Hashable {}

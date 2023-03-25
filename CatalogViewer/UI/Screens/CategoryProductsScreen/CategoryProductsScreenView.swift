@@ -6,40 +6,85 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CategoryProductsScreenView: View {
     
     @ObservedObject var viewModel: CategoryProductsScreenVM
     
     var body: some View {
-        makeProductsGridView()
+        List(viewModel.sections, id: \.uuid) { section in
+            let sectionID = CategoryProductsScreenVM.SectionIdentifiers.init(rawValue: section.uuid)!
+            switch sectionID {
+            case .productsGrid:
+                makeProductsGridSection(section: section)
+            }
+        }
     }
     
 }
 
 extension CategoryProductsScreenView {
     @ViewBuilder
-    private func makeProductsGridView() -> some View {
+    private func makeProductsGridSection(section: CategoryProductsScreenVM.Section) -> some View {
         let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible())
+            GridItem(.flexible(), spacing: 20),
+            GridItem(.flexible(), spacing: 0)
         ]
-        let data = (1...100).map { "Item \($0)" }
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(data, id: \.self) { item in
-                    Text(item)
+        
+        Section {
+            ScrollView {
+                LazyVGrid(columns: columns, spacing: 0) {
+                    ForEach(section.cells, id: \.self) { cell in
+                        switch cell {
+                        case .productGridItem(let item):
+                            makeProductGridItemView(item: item)
+                        case .redactedItem:
+                            makeProductGridItemViewRedacted()
+                        }
+                    }
                 }
             }
-            .padding(.horizontal)
+        } header: {
+            Text(section.title)
         }
     }
     
     @ViewBuilder
     private func makeProductGridItemView(item: Product) -> some View {
         VStack() {
-            Text("Image")
+            Rectangle()
+                .foregroundColor(.clear)
+                .aspectRatio(1, contentMode: .fit)
+                .overlay {
+                    KFImage(URL(string: item.image))
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                }
+                .cornerRadius(12)
             Text(item.title)
+                .fontWeight(.medium)
         }
+        .padding(.top)
+    }
+    
+    @ViewBuilder
+    private func makeProductGridItemViewRedacted() -> some View {
+        VStack() {
+            Rectangle()
+                .foregroundColor(.clear)
+                .aspectRatio(1, contentMode: .fit)
+                .overlay {
+                    Image(systemName: "placeholdertext.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                }
+                .cornerRadius(12)
+            Text(String.random(of: Int.random(in: 6...18)))
+        }
+        .padding(.top)
+        .redacted(reason: .placeholder)
     }
 }

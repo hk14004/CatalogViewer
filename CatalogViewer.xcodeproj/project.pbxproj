@@ -25,6 +25,7 @@
 		D40BC30829CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30729CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift */; };
 		D40BC30A29CE3CD900B4A1E2 /* CategoryProductsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30929CE3CD900B4A1E2 /* CategoryProductsScreenView.swift */; };
 		D40BC30E29CE487300B4A1E2 /* String + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC30D29CE487300B4A1E2 /* String + ext.swift */; };
+		D40BC31129CEE00000B4A1E2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC31029CEE00000B4A1E2 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40BC31129CEE00000B4A1E2 /* Kingfisher in Frameworks */,
 				D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */,
 				D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */,
 				D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */,
@@ -224,6 +226,7 @@
 				D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */,
 				D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */,
 				D40BC2ED29CE212700B4A1E2 /* DevToolsUI */,
+				D40BC31029CEE00000B4A1E2 /* Kingfisher */,
 			);
 			productName = CatalogViewer;
 			productReference = D40BC2CD29CE1E1300B4A1E2 /* CatalogViewer.app */;
@@ -255,6 +258,7 @@
 			mainGroup = D40BC2C429CE1E1300B4A1E2;
 			packageReferences = (
 				D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */,
+				D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = D40BC2CE29CE1E1300B4A1E2 /* Products */;
 			projectDirPath = "";
@@ -510,6 +514,14 @@
 				kind = branch;
 			};
 		};
+		D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -537,6 +549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
 			productName = DevToolsUI;
+		};
+		D40BC31029CEE00000B4A1E2 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
