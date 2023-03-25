@@ -20,6 +20,7 @@ class CategoryProductsScreenVM: ObservableObject {
     enum Cell: Hashable {
         case productGridItem(Product)
         case redactedItem(uuid: String)
+        case nothingToShow
     }
     
     struct Section: UISectionModelProtocol {
@@ -105,8 +106,13 @@ extension CategoryProductsScreenVM {
             guard let loadedCategories = items else {
                 return makeRedactedCells(count: 6)
             }
-            let loadedCells = loadedCategories.map({Cell.productGridItem($0)})
-            return loadedCells
+            if loadedCategories.isEmpty {
+                return [.nothingToShow]
+            } else {
+                let loadedCells = loadedCategories.map({Cell.productGridItem($0)})
+                return loadedCells
+            }
+            
         }()
         let section = Section(uuid: SectionIdentifiers.productsGrid.rawValue,
                               title: "Featured", cells: cells)

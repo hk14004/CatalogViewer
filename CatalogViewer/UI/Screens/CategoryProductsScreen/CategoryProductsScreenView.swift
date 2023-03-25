@@ -46,6 +46,8 @@ extension CategoryProductsScreenView {
                             .padding(.top, 6)
                     case .redactedItem:
                         makeProductGridItemViewRedacted()
+                    case .nothingToShow:
+                        SuchEmptyView()
                     }
                 }
             }

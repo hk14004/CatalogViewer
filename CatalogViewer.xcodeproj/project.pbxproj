@@ -44,6 +44,7 @@
 		D40BC33D29CF37CD00B4A1E2 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC33C29CF37CD00B4A1E2 /* ProductsResponse.swift */; };
 		D40BC33F29CF3C3D00B4A1E2 /* CatalogProviderField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC33E29CF3C3D00B4A1E2 /* CatalogProviderField.swift */; };
 		D40BC34429CF558400B4A1E2 /* ProductResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */; };
+		D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		D40BC33C29CF37CD00B4A1E2 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
 		D40BC33E29CF3C3D00B4A1E2 /* CatalogProviderField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProviderField.swift; sourceTree = "<group>"; };
 		D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseMapper.swift; sourceTree = "<group>"; };
+		D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuchEmptyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 		D40BC2FF29CE2C8200B4A1E2 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D40BC34829CF762700B4A1E2 /* MiscViews */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -361,6 +364,22 @@
 			path = Mappers;
 			sourceTree = "<group>";
 		};
+		D40BC34529CF75AF00B4A1E2 /* SuchEmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */,
+			);
+			path = SuchEmptyView;
+			sourceTree = "<group>";
+		};
+		D40BC34829CF762700B4A1E2 /* MiscViews */ = {
+			isa = PBXGroup;
+			children = (
+				D40BC34529CF75AF00B4A1E2 /* SuchEmptyView */,
+			);
+			path = MiscViews;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -454,6 +473,7 @@
 				D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */,
 				D40BC32129CF009F00B4A1E2 /* CatalogProviderError.swift in Sources */,
 				D40BC33829CF1C5C00B4A1E2 /* Dependencies.swift in Sources */,
+				D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */,
 				D40BC33329CF120B00B4A1E2 /* Category + PersistableDomainModelProtocol.swift in Sources */,
 				D40BC33529CF15EF00B4A1E2 /* ProductRepository.swift in Sources */,
 				D40BC34429CF558400B4A1E2 /* ProductResponseMapper.swift in Sources */,

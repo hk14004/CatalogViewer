@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CategoriesScreenView: View {
     
@@ -32,6 +33,8 @@ extension CategoriesScreenView {
                             }
                     case .redactedRow:
                         makeRedactedRow()
+                    case .nothingToShow:
+                        SuchEmptyView()
                     }
                 }
             } header: {

@@ -24,6 +24,7 @@ class CategoriesScreenVM: ObservableObject {
     enum Cell: Hashable {
         case categoryItem(Category)
         case redactedRow(uuid: String)
+        case nothingToShow
     }
     
     struct Section: UISectionModelProtocol {
@@ -119,8 +120,13 @@ extension CategoriesScreenVM {
             guard let loadedCategories = items else {
                 return makeRedactedCells(count: 9)
             }
-            let loadedCells = loadedCategories.map({Cell.categoryItem($0)})
-            return loadedCells
+            if loadedCategories.isEmpty {
+                return [.nothingToShow]
+            } else {
+                let loadedCells = loadedCategories.map({Cell.categoryItem($0)})
+                return loadedCells
+            }
+            
         }()
         let section = Section(uuid: SectionIdentifiers.categoriesList.rawValue,
                               title: "Categories", cells: cells)
