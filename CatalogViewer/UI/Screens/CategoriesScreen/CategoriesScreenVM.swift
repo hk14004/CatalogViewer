@@ -52,12 +52,15 @@ class CategoriesScreenVM: ObservableObject {
     // Private
     private let bag = Bag()
     private var loadedCategories: [Category]?
+    private let categoryRepository: CategoryRepositoryProtocol
     
     // MARK: Init
     
-    init() {
-//        loadedCategories = makeTestItems()
+    init(categoryRepository: CategoryRepositoryProtocol) {
+        self.categoryRepository = categoryRepository
         sections = makeSections()
+        refreshRemoteData()
+        observeLocalData()
     }
     
 }
@@ -73,6 +76,38 @@ extension CategoriesScreenVM {
 // MARK: Private
 
 extension CategoriesScreenVM {
+    private func refreshRemoteData() {
+        categoryRepository.refreshCategories {
+            print("Refreshed categories")
+        }
+    }
+    
+    private func observeLocalData() {
+        bag.categoriesHandle = categoryRepository.observeCategories().removeDuplicates().sink { [weak self] _categories in
+            self?.onLocalCategoriesUpdated(list: _categories)
+        }
+    }
+    
+    private func onLocalCategoriesUpdated(list: [Category]) {
+        func onUpdateUI() {
+            let updatedSection = makeCategoriesListSection(items: loadedCategories)
+            sections.update(section: updatedSection)
+        }
+        
+        let initialLoad: Bool = loadedCategories == nil
+        loadedCategories = list
+        
+        // Update UI
+        
+        if initialLoad {
+            onUpdateUI()
+        } else {
+            withAnimation {
+                onUpdateUI()
+            }
+        }
+    }
+    
     private func makeSections() -> [Section] {
         [
             makeCategoriesListSection(items: loadedCategories)
@@ -95,7 +130,7 @@ extension CategoriesScreenVM {
     private func makeTestItems() -> [Category] {
         return [
             .init(id: "1", parentID: "", imageURL: "", size: "", title: "T-Shirt"),
-            .init(id: "2", parentID: "", imageURL: "", size: "", title: "Not T-Shirt")
+            .init(id: "2", parentID: "", imageURL: "", size: "", title: "Not a T-Shirt")
         ]
     }
     

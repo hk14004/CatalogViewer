@@ -15,7 +15,7 @@ class CategoriesCoordinator: NavigationCoordinator {
     var children: [NavigationCoordinator] = []
     
     func start() {
-        let vm = CategoriesScreenVM()
+        let vm = CategoriesScreenVM(categoryRepository: DEPENDENCIES.resolve(CategoryRepositoryProtocol.self)!)
         vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoriesScreenView(viewModel: vm))
         router.push(vc, isAnimated: true, onNavigateBack: onFree)
