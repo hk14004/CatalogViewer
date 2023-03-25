@@ -16,6 +16,7 @@ protocol ProductRepositoryProtocol {
     
     // Local data
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never>
+    func getProducts(categoryIds: [String]) -> [Product]
     
 }
 
@@ -38,6 +39,13 @@ class ProductRepository {
 }
 
 extension ProductRepository: ProductRepositoryProtocol {
+    func getProducts(categoryIds: [String]) -> [Product] {
+        let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
+        return store.getList(predicate: predcate,
+                             sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                             ascending: true)
+    }
+    
     func refreshProducts(categoryIds: [String], completion: @escaping () -> ()) {
         remoteProvider.getRemoteProducts(categoryIds: categoryIds) { [weak self] result in
             guard let self = self else {

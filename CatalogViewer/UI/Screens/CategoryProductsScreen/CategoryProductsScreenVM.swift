@@ -51,28 +51,43 @@ class CategoryProductsScreenVM: ObservableObject {
     private var loadedProducts: [Product]?
     private let category: Category
     private let productsRepository: ProductRepositoryProtocol
+    private var refreshingProducts: Bool = false
+    private lazy var redactedProducts: [Cell] = makeRedactedCells(count: 6)
     
     init(category: Category, productsRepository: ProductRepositoryProtocol) {
         self.category = category
         self.productsRepository = productsRepository
-        sections = makeSections()
+        loadProductsToMemory()
         refreshRemoteData()
-        observeLocalData()
+        sections = makeSections()
     }
     
 }
 
 extension CategoryProductsScreenVM {
+    private func loadProductsToMemory() {
+        loadedProducts = productsRepository.getProducts(categoryIds: [category.id])
+    }
+    
     private func refreshRemoteData() {
-        productsRepository.refreshProducts(categoryIds: [category.id]) {
-            print("Refreshed products")
+        refreshingProducts = true
+        productsRepository.refreshProducts(categoryIds: [category.id]) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.refreshingProducts = false
+            self.loadProductsToMemory()
+            self.onLocalProductsUpdated(list: self.loadedProducts ?? [])
+            self.observeLocalData()
         }
     }
     
     private func observeLocalData() {
-        bag.productsHandle = productsRepository.observeProducts(categoryIds: [category.id]).removeDuplicates().sink { [weak self] _products in
-            self?.onLocalProductsUpdated(list: _products)
-        }
+        bag.productsHandle = productsRepository.observeProducts(categoryIds: [category.id])
+            .dropFirst().removeDuplicates()
+            .sink { [weak self] _products in
+                self?.onLocalProductsUpdated(list: _products)
+            }
     }
     
     private func onLocalProductsUpdated(list: [Product]) {
@@ -104,10 +119,14 @@ extension CategoryProductsScreenVM {
     private func makeProductListSection(items: [Product]?) -> Section {
         let cells: [Cell] = {
             guard let loadedCategories = items else {
-                return makeRedactedCells(count: 6)
+                return redactedProducts
             }
             if loadedCategories.isEmpty {
-                return [.nothingToShow]
+                if refreshingProducts {
+                    return redactedProducts
+                } else {
+                    return [.nothingToShow]
+                }
             } else {
                 let loadedCells = loadedCategories.map({Cell.productGridItem($0)})
                 return loadedCells
