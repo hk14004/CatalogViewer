@@ -58,11 +58,13 @@ extension CategoryProductsScreenView {
     private func makeProductGridItemView(item: Product) -> some View {
         VStack(alignment: .leading, spacing: 0) {
             Rectangle()
-                .foregroundColor(.clear)
+                .foregroundColor(Color("RedactedImage"))
                 .aspectRatio(1, contentMode: .fit)
                 .overlay {
                     KFImage(URL(string: item.image))
                         .resizable()
+                        .fade(duration: 0.3)
+                        .forceTransition()
                         .scaledToFill()
                         .clipped()
                 }

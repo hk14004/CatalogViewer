@@ -58,7 +58,9 @@ extension ProductRepository: ProductRepositoryProtocol {
     
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never> {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
-        return store.observeList(predicate: predcate)
+        return store.observeList(predicate: predcate,
+                                 sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                                 ascending: true)
     }
     
 }

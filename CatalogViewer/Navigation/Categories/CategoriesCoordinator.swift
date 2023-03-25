@@ -42,6 +42,7 @@ extension CategoriesCoordinator {
         let vm = CategoryProductsScreenVM(category: item,
                                           productsRepository: DI.resolve(ProductRepositoryProtocol.self)!)
         let vc = UIHostingController(rootView: CategoryProductsScreenView(viewModel: vm))
+        vc.title = item.title
         router.navigationController.pushViewController(vc, animated: true)
     }
 }
