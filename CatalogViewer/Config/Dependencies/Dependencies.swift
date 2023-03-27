@@ -11,6 +11,7 @@ import RealmSwift
 import DevToolsRealm
 import Moya
 import DevToolsNetworking
+import UIKit
 
 let DI: Container = {
     let container = Container()
@@ -18,7 +19,20 @@ let DI: Container = {
     // MARK: Data
     
     // Stores
-    container.register(Realm.self) { _ in try! Realm() }
+    container.register(DispatchQueue.self,
+                       name: DATABASE_QUEUE_NAME) { _ in DispatchQueue(label: DATABASE_QUEUE_NAME) }
+    container.register(Realm.self) { resolver in
+        let queue = resolver.resolve(DispatchQueue.self, name: DATABASE_QUEUE_NAME)!
+        func makeRealm() -> Realm {
+            var realm: Realm? = nil
+            queue.sync {
+                let r = try! Realm()
+                realm = r
+            }
+            return realm!
+        }
+        return makeRealm()
+    }
     container.register(PersistentRealmStore<Category>.self) { resolver in
         PersistentRealmStore(realm: resolver.resolve(Realm.self)!)
     }
