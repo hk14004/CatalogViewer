@@ -78,9 +78,10 @@ extension CategoriesScreenVM {
 
 extension CategoriesScreenVM {
     private func refreshRemoteData() {
-        categoryRepository.refreshCategories {
-            print("Refreshed categories")
+        Task {
+            await categoryRepository.refreshCategories()
         }
+        
     }
     
     private func observeLocalData() {

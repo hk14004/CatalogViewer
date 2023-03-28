@@ -19,25 +19,14 @@ let DI: Container = {
     // MARK: Data
     
     // Stores
-    container.register(DispatchQueue.self,
-                       name: DATABASE_QUEUE_NAME) { _ in DispatchQueue(label: DATABASE_QUEUE_NAME) }
-    container.register(Realm.self) { resolver in
-        let queue = resolver.resolve(DispatchQueue.self, name: DATABASE_QUEUE_NAME)!
-        func makeRealm() -> Realm {
-            var realm: Realm? = nil
-            queue.sync {
-                let r = try! Realm()
-                realm = r
-            }
-            return realm!
-        }
-        return makeRealm()
+    container.register(Realm.Configuration.self) { resolver in
+        Realm.Configuration()
     }
     container.register(PersistentRealmStore<Category>.self) { resolver in
-        PersistentRealmStore(realm: resolver.resolve(Realm.self)!)
+        PersistentRealmStore<Category>(dbConfig: resolver.resolve(Realm.Configuration.self)!)
     }
     container.register(PersistentRealmStore<Product>.self) { resolver in
-        PersistentRealmStore(realm: resolver.resolve(Realm.self)!)
+        PersistentRealmStore<Product>(dbConfig: resolver.resolve(Realm.Configuration.self)!)
     }
     
     // Providers

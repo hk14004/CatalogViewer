@@ -12,7 +12,7 @@ import DevToolsRealm
 protocol CategoryRepositoryProtocol {
     
     // Remote data
-    func refreshCategories(completion: @escaping ()->()) // Add error if needed
+    func refreshCategories() async
     
     // Local data
     func observeCategories() -> AnyPublisher<[Category], Never>
@@ -36,28 +36,29 @@ class CategoryRepository {
 }
 
 extension CategoryRepository: CategoryRepositoryProtocol {
-    func refreshCategories(completion: @escaping () -> ()) {
-        remoteProvider.getRemoteCategories { [weak self] result in
-            switch result {
-            case .success(let decodedData):
-                // TODO: Optionally inject mapper
-                let items: [Category] = decodedData.result.categories.map { item in
-                    Category(id: "\(item.id)", parentID: "\(item.parent_id)",
-                             imageURL: item.image_url, size: item.size, title: item.title)
-                }
-                self?.categoriesStore.replace(with: items)
-                completion()
-            case .failure(let providerError):
-                // TODO: Handle error if needed
-                print(providerError)
-                completion()
+    func refreshCategories() async {
+        let result = await withCheckedContinuation { continuation in
+            remoteProvider.getRemoteCategories { result in
+                continuation.resume(returning: result)
             }
+        }
+        switch result {
+        case .success(let decodedData):
+            // TODO: Optionally inject mapper
+            let items: [Category] = decodedData.result.categories.map { item in
+                Category(id: "\(item.id)", parentID: "\(item.parent_id)",
+                         imageURL: item.image_url, size: item.size, title: item.title)
+            }
+            await categoriesStore.replace(with: items)
+        case .failure(let providerError):
+            // TODO: Handle error if needed
+            print(providerError)
         }
     }
     
     func observeCategories() -> AnyPublisher<[Category], Never> {
-        categoriesStore.observeList(sortedByKeyPath: Category_DB.PersistedField.title.rawValue,
-                                    ascending: true)
+        let key = Category_DB.PersistedField.title.rawValue
+        return categoriesStore.observeList(sortedByKeyPath: key, ascending: true)
     }
     
 }

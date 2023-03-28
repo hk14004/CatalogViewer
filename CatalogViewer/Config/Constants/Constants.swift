@@ -6,5 +6,3 @@
 //
 
 import Foundation
-
-let DATABASE_QUEUE_NAME = "DATABASE_QUEUE"

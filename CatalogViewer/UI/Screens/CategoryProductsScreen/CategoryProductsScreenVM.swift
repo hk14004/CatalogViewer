@@ -57,32 +57,31 @@ class CategoryProductsScreenVM: ObservableObject {
     init(category: Category, productsRepository: ProductRepositoryProtocol) {
         self.category = category
         self.productsRepository = productsRepository
-        loadProductsToMemory()
-        refreshRemoteData()
-        sections = makeSections()
+        Task {
+            await loadProductsToMemory()
+            refreshRemoteData()
+            sections = makeSections()
+        }
     }
-    
 }
 
 extension CategoryProductsScreenVM {
-    private func loadProductsToMemory() {
-        loadedProducts = productsRepository.getProducts(categoryIds: [category.id])
+    private func loadProductsToMemory() async {
+        loadedProducts = await productsRepository.getProducts(categoryIds: [category.id])
     }
     
     private func refreshRemoteData() {
-        refreshingProducts = true
-        productsRepository.refreshProducts(categoryIds: [category.id]) { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.refreshingProducts = false
-            self.loadProductsToMemory()
-            self.onLocalProductsUpdated(list: self.loadedProducts ?? [])
-            self.observeLocalData()
+        Task {
+            refreshingProducts = true
+            await productsRepository.refreshProducts(categoryIds: [category.id])
+            refreshingProducts = false
+            await loadProductsToMemory()
+            onLocalProductsUpdated(list: self.loadedProducts ?? [])
+            observeLocalData()
         }
     }
     
-    private func observeLocalData() {
+    private func observeLocalData()  {
         bag.productsHandle = productsRepository.observeProducts(categoryIds: [category.id])
             .dropFirst().removeDuplicates()
             .sink { [weak self] _products in

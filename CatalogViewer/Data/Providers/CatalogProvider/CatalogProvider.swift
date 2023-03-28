@@ -68,17 +68,19 @@ extension CatalogProvider: CatalogProviderProtocol {
         let target = CatalogTarget(endpoint: .getCategories)
         let launched = requestManager.launchSingleUniqueRequest(requestID: target.defaultUUID, target: target, provider: provider,
                                                                 hookRunning: true, retryMethod: .default) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let response = try JSONDecoder().decode(CategoriesResponse.self, from: response.data)
-                    completion(.success(response))
-                } catch (let decodeError) {
-                    print(decodeError)
-                    completion(.failure(.responseDecodeIssue))
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let response):
+                    do {
+                        let response = try JSONDecoder().decode(CategoriesResponse.self, from: response.data)
+                        completion(.success(response))
+                    } catch (let decodeError) {
+                        print(decodeError)
+                        completion(.failure(.responseDecodeIssue))
+                    }
+                case .failure(let err):
+                    completion(.failure(.fetchFailed(code: err.errorCode)))
                 }
-            case .failure(let err):
-                completion(.failure(.fetchFailed(code: err.errorCode)))
             }
         }
         

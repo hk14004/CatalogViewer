@@ -12,11 +12,11 @@ import DevToolsRealm
 protocol ProductRepositoryProtocol {
     
     // Remote data
-    func refreshProducts(categoryIds: [String], completion: @escaping ()->()) // Add error if needed
+    func refreshProducts(categoryIds: [String]) async
     
     // Local data
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never>
-    func getProducts(categoryIds: [String]) -> [Product]
+    func getProducts(categoryIds: [String]) async -> [Product]
     
 }
 
@@ -39,28 +39,27 @@ class ProductRepository {
 }
 
 extension ProductRepository: ProductRepositoryProtocol {
-    func getProducts(categoryIds: [String]) -> [Product] {
+    func getProducts(categoryIds: [String]) async -> [Product] {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
-        return store.getList(predicate: predcate,
-                             sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
-                             ascending: true)
+        return await store.getList(predicate: predcate,
+                                   sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                                   ascending: true)
     }
     
-    func refreshProducts(categoryIds: [String], completion: @escaping () -> ()) {
-        remoteProvider.getRemoteProducts(categoryIds: categoryIds) { [weak self] result in
-            guard let self = self else {
-                return
+    func refreshProducts(categoryIds: [String]) async {
+        let result = await withCheckedContinuation({ continuation in
+            remoteProvider.getRemoteProducts(categoryIds: categoryIds) { result in
+                continuation.resume(returning: result)
             }
-            switch result {
-            case .success(let decodedData):
-                let fetchedProducts = self.mapper.map(response: decodedData)
-                self.replaceCategoryProducts(withProducts: fetchedProducts, forCategories: categoryIds)
-            case .failure(let providerError):
-                // TODO: Handle error if needed
-                print(providerError)
-                
-            }
-            completion()
+        })
+        
+        switch result {
+        case .success(let decodedData):
+            let fetchedProducts = self.mapper.map(response: decodedData)
+            await replaceCategoryProducts(withProducts: fetchedProducts, forCategories: categoryIds)
+        case .failure(let providerError):
+            // TODO: Handle error if needed
+            print(providerError)
         }
     }
     
@@ -77,21 +76,18 @@ extension ProductRepository: ProductRepositoryProtocol {
 
 extension ProductRepository {
     
-    @discardableResult
-    private func replaceCategoryProducts(withProducts products: [Product], forCategories categoryIds: [String]) -> Bool {
+    private func replaceCategoryProducts(withProducts products: [Product], forCategories categoryIds: [String]) async {
         // 1. Fetch old products and delete them
         // 2. Add new products
         guard let predicate = makeSearchPredicateForCategories(categoryIds: categoryIds) else {
-            return false
+            return
         }
-        let old = store.getList(predicate: predicate)
-        store.delete(old, chain: [
-            {
-                self.store.addOrUpdate(products)
-            }
+        let old = await store.getList(predicate: predicate)
+        let _store = store
+        await _store.bulkWrite(operations: [
+            {await _store.delete(old)},
+            {await _store.addOrUpdate(products)},
         ])
-        
-        return true
     }
     
     private func makeSearchPredicateForCategories(categoryIds: [String]) -> NSCompoundPredicate? {
