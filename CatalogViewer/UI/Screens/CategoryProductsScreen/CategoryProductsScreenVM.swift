@@ -53,7 +53,7 @@ class CategoryProductsScreenVM: ObservableObject {
     private let productsRepository: ProductRepositoryProtocol
     private var productsRefreshed: Bool = false
     private lazy var redactedProducts: [Cell] = makeRedactedCells(count: 12)
-        
+    
     init(category: Category, productsRepository: ProductRepositoryProtocol) {
         self.category = category
         self.productsRepository = productsRepository
@@ -73,7 +73,7 @@ extension CategoryProductsScreenVM {
             // Load DB cache and display again, this time we know if there is no data
             await updateProductsSection()
             // Observe and react to DB changes
-            observeLocalData()
+            observeCachedData()
         }
     }
     
@@ -84,7 +84,7 @@ extension CategoryProductsScreenVM {
         }
         
         loadedProducts = loaded
-        onLocalProductsUpdated(list: loaded)
+        onRenderProducts(list: loaded)
         
     }
     
@@ -93,20 +93,17 @@ extension CategoryProductsScreenVM {
         productsRefreshed = true
     }
     
-    private func observeLocalData()  {
+    private func observeCachedData()  {
         bag.productsHandle = productsRepository.observeProducts(categoryIds: [category.id])
             .dropFirst()
             .removeDuplicates()
-            .sink { [weak self] _products in
-                self?.onLocalProductsUpdated(list: _products)
+            .sink { [unowned self] _products in
+                loadedProducts = _products
+                onRenderProducts(list: _products)
             }
     }
     
-    private func onLocalProductsUpdated(list: [Product]) {
-        loadedProducts = list
-        
-        // Update UI
-        
+    private func onRenderProducts(list: [Product]) {
         func onUpdateUI() {
             let updatedSection = makeProductListSection(items: loadedProducts)
             sections.update(section: updatedSection)

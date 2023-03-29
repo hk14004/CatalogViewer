@@ -88,7 +88,7 @@ extension CategoriesScreenVM {
             // Load DB cache and display again, this time we know if there is no data
             await updateCategoriesSection()
             // Observe and react to DB changes
-            observeLocalData()
+            observeCachedData()
         }
     }
     
@@ -97,9 +97,8 @@ extension CategoriesScreenVM {
         if !categoriesRefreshed, loaded.isEmpty {
             return
         }
-        
         loadedCategories = loaded
-        onLocalCategoriesUpdated(list: loaded)
+        onRenderCategories(list: loaded)
     }
     
     private func refreshCategories() async {
@@ -107,19 +106,16 @@ extension CategoriesScreenVM {
         categoriesRefreshed = true
     }
     
-    private func observeLocalData() {
+    private func observeCachedData() {
         bag.categoriesHandle = categoryRepository.observeCategories()
             .dropFirst()
-            .removeDuplicates().sink { [weak self] _categories in
-                self?.onLocalCategoriesUpdated(list: _categories)
+            .removeDuplicates().sink { [unowned self] _categories in
+                loadedCategories = _categories
+                onRenderCategories(list: _categories)
             }
     }
     
-    private func onLocalCategoriesUpdated(list: [Category]) {
-        loadedCategories = list
-        
-        // Update UI
-        
+    private func onRenderCategories(list: [Category]) {
         func onUpdateUI() {
             let updatedSection = makeCategoriesListSection(items: loadedCategories)
             sections.update(section: updatedSection)

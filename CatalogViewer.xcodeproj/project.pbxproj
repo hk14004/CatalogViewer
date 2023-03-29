@@ -185,8 +185,8 @@
 		D40BC2F829CE286000B4A1E2 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				D40BC2FB29CE299E00B4A1E2 /* Categories */,
 				D40BC2F929CE288300B4A1E2 /* AppCoordinator.swift */,
+				D40BC2FB29CE299E00B4A1E2 /* Categories */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -219,8 +219,8 @@
 		D40BC30029CE2C8B00B4A1E2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				D40BC30629CE3C6D00B4A1E2 /* CategoryProductsScreen */,
 				D40BC30529CE3C0700B4A1E2 /* CategoriesScreen */,
+				D40BC30629CE3C6D00B4A1E2 /* CategoryProductsScreen */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
