@@ -16,6 +16,7 @@ protocol CategoryRepositoryProtocol {
     
     // Local data
     func observeCategories() -> AnyPublisher<[Category], Never>
+    func getCategories() async -> [Category]
 
 }
 
@@ -36,6 +37,11 @@ class CategoryRepository {
 }
 
 extension CategoryRepository: CategoryRepositoryProtocol {
+    func getCategories() async -> [Category] {
+        let key = Category_DB.PersistedField.title.rawValue
+        return await categoriesStore.getList(sortedByKeyPath: key, ascending: true)
+    }
+    
     func refreshCategories() async {
         let result = await withCheckedContinuation { continuation in
             remoteProvider.getRemoteCategories { result in

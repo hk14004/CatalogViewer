@@ -54,14 +54,14 @@ class CategoriesScreenVM: ObservableObject {
     private let bag = Bag()
     private var loadedCategories: [Category]?
     private let categoryRepository: CategoryRepositoryProtocol
+    private var categoriesRefreshed: Bool = false
+    private lazy var redactedCategories: [Cell] = makeRedactedCells(count: 12)
     
     // MARK: Init
     
     init(categoryRepository: CategoryRepositoryProtocol) {
         self.categoryRepository = categoryRepository
-        sections = makeSections()
-        refreshRemoteData()
-        observeLocalData()
+        startup()
     }
     
 }
@@ -77,35 +77,61 @@ extension CategoriesScreenVM {
 // MARK: Private
 
 extension CategoriesScreenVM {
-    private func refreshRemoteData() {
+    private func startup() {
         Task {
-            await categoryRepository.refreshCategories()
+            // Create redacted sections
+            sections = makeSections()
+            // Load DB cache and display
+            await updateCategoriesSection()
+            // Update DB with remote data
+            await refreshCategories()
+            // Load DB cache and display again, this time we know if there is no data
+            await updateCategoriesSection()
+            // Observe and react to DB changes
+            observeLocalData()
+        }
+    }
+    
+    private func updateCategoriesSection() async {
+        let loaded = await categoryRepository.getCategories()
+        if !categoriesRefreshed, loaded.isEmpty {
+            return
         }
         
+        loadedCategories = loaded
+        onLocalCategoriesUpdated(list: loaded)
+    }
+    
+    private func refreshCategories() async {
+        await categoryRepository.refreshCategories()
+        categoriesRefreshed = true
     }
     
     private func observeLocalData() {
-        bag.categoriesHandle = categoryRepository.observeCategories().removeDuplicates().sink { [weak self] _categories in
-            self?.onLocalCategoriesUpdated(list: _categories)
-        }
+        bag.categoriesHandle = categoryRepository.observeCategories()
+            .dropFirst()
+            .removeDuplicates().sink { [weak self] _categories in
+                self?.onLocalCategoriesUpdated(list: _categories)
+            }
     }
     
     private func onLocalCategoriesUpdated(list: [Category]) {
+        loadedCategories = list
+        
+        // Update UI
+        
         func onUpdateUI() {
             let updatedSection = makeCategoriesListSection(items: loadedCategories)
             sections.update(section: updatedSection)
         }
         
-        let initialLoad: Bool = loadedCategories == nil
-        loadedCategories = list
-        
-        // Update UI
-        
-        if initialLoad {
-            onUpdateUI()
-        } else {
-            withAnimation {
+        DispatchQueue.main.async {
+            if !self.categoriesRefreshed {
                 onUpdateUI()
+            } else {
+                withAnimation {
+                    onUpdateUI()
+                }
             }
         }
     }
@@ -119,10 +145,14 @@ extension CategoriesScreenVM {
     private func makeCategoriesListSection(items: [Category]?) -> Section {
         let cells: [Cell] = {
             guard let loadedCategories = items else {
-                return makeRedactedCells(count: 9)
+                return redactedCategories
             }
             if loadedCategories.isEmpty {
-                return [.nothingToShow]
+                if categoriesRefreshed {
+                    return [.nothingToShow]
+                } else {
+                    return redactedCategories
+                }
             } else {
                 let loadedCells = loadedCategories.map({Cell.categoryItem($0)})
                 return loadedCells
@@ -132,13 +162,6 @@ extension CategoriesScreenVM {
         let section = Section(uuid: SectionIdentifiers.categoriesList.rawValue,
                               title: "Categories", cells: cells)
         return section
-    }
-    
-    private func makeTestItems() -> [Category] {
-        return [
-            .init(id: "1", parentID: "", imageURL: "", size: "", title: "T-Shirt"),
-            .init(id: "2", parentID: "", imageURL: "", size: "", title: "Not a T-Shirt")
-        ]
     }
     
     private func makeRedactedCells(count: Int) -> [Cell]{

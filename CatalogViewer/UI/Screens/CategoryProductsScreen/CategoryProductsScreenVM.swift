@@ -51,60 +51,74 @@ class CategoryProductsScreenVM: ObservableObject {
     private var loadedProducts: [Product]?
     private let category: Category
     private let productsRepository: ProductRepositoryProtocol
-    private var refreshingProducts: Bool = false
-    private lazy var redactedProducts: [Cell] = makeRedactedCells(count: 6)
-    
+    private var productsRefreshed: Bool = false
+    private lazy var redactedProducts: [Cell] = makeRedactedCells(count: 12)
+        
     init(category: Category, productsRepository: ProductRepositoryProtocol) {
         self.category = category
         self.productsRepository = productsRepository
-        Task {
-            await loadProductsToMemory()
-            refreshRemoteData()
-            sections = makeSections()
-        }
+        startup()
     }
 }
 
 extension CategoryProductsScreenVM {
-    private func loadProductsToMemory() async {
-        loadedProducts = await productsRepository.getProducts(categoryIds: [category.id])
-    }
-    
-    private func refreshRemoteData() {
+    private func startup() {
         Task {
-            refreshingProducts = true
-            await productsRepository.refreshProducts(categoryIds: [category.id])
-            refreshingProducts = false
-            await loadProductsToMemory()
-            onLocalProductsUpdated(list: self.loadedProducts ?? [])
+            // Create redacted sections
+            sections = makeSections()
+            // Load DB cache and display
+            await updateProductsSection()
+            // Update DB with remote data
+            await refreshProducts()
+            // Load DB cache and display again, this time we know if there is no data
+            await updateProductsSection()
+            // Observe and react to DB changes
             observeLocalData()
         }
     }
     
+    private func updateProductsSection() async {
+        let loaded = await productsRepository.getProducts(categoryIds: [category.id])
+        if !productsRefreshed, loaded.isEmpty {
+            return
+        }
+        
+        loadedProducts = loaded
+        onLocalProductsUpdated(list: loaded)
+        
+    }
+    
+    private func refreshProducts() async {
+        await productsRepository.refreshProducts(categoryIds: [category.id])
+        productsRefreshed = true
+    }
+    
     private func observeLocalData()  {
         bag.productsHandle = productsRepository.observeProducts(categoryIds: [category.id])
-            .dropFirst().removeDuplicates()
+            .dropFirst()
+            .removeDuplicates()
             .sink { [weak self] _products in
                 self?.onLocalProductsUpdated(list: _products)
             }
     }
     
     private func onLocalProductsUpdated(list: [Product]) {
+        loadedProducts = list
+        
+        // Update UI
+        
         func onUpdateUI() {
             let updatedSection = makeProductListSection(items: loadedProducts)
             sections.update(section: updatedSection)
         }
         
-        let initialLoad: Bool = loadedProducts == nil
-        loadedProducts = list
-        
-        // Update UI
-        
-        if initialLoad {
-            onUpdateUI()
-        } else {
-            withAnimation {
+        DispatchQueue.main.async {
+            if !self.productsRefreshed {
                 onUpdateUI()
+            } else {
+                withAnimation {
+                    onUpdateUI()
+                }
             }
         }
     }
@@ -121,10 +135,10 @@ extension CategoryProductsScreenVM {
                 return redactedProducts
             }
             if loadedCategories.isEmpty {
-                if refreshingProducts {
-                    return redactedProducts
-                } else {
+                if productsRefreshed {
                     return [.nothingToShow]
+                } else {
+                    return redactedProducts
                 }
             } else {
                 let loadedCells = loadedCategories.map({Cell.productGridItem($0)})
