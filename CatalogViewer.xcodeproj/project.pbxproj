@@ -221,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				D40BC30029CE2C8B00B4A1E2 /* Screens */,
-				D4A2450F29D598230030C651 /* ProductScreen */,
 				D40BC2FF29CE2C8200B4A1E2 /* Components */,
 			);
 			path = UI;
@@ -238,6 +237,7 @@
 		D40BC30029CE2C8B00B4A1E2 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D4A2450F29D598230030C651 /* ProductScreen */,
 				D40BC30529CE3C0700B4A1E2 /* CategoriesScreen */,
 				D40BC30629CE3C6D00B4A1E2 /* CategoryProductsScreen */,
 			);
@@ -321,8 +321,8 @@
 		D40BC32229CF09BD00B4A1E2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				D40BC34129CF554900B4A1E2 /* ProductRepository */,
 				D40BC34029CF553E00B4A1E2 /* CategoryRepository */,
+				D40BC34129CF554900B4A1E2 /* ProductRepository */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
