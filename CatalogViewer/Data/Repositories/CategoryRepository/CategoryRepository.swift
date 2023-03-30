@@ -24,14 +24,16 @@ class CategoryRepository {
     
     // MARK: Properties
     
-    private var remoteProvider: CatalogProviderProtocol
-    private var categoriesStore: PersistentRealmStore<Category>
+    private let remoteProvider: CatalogProviderProtocol
+    private let categoriesStore: PersistentRealmStore<Category>
+    private let mapper: CategoryResponseMapperProtocol
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, categoriesStore: PersistentRealmStore<Category>) {
+    init(remoteProvider: CatalogProviderProtocol, categoriesStore: PersistentRealmStore<Category>, mapper: CategoryResponseMapperProtocol) {
         self.remoteProvider = remoteProvider
         self.categoriesStore = categoriesStore
+        self.mapper = mapper
     }
     
 }
@@ -50,11 +52,7 @@ extension CategoryRepository: CategoryRepositoryProtocol {
         }
         switch result {
         case .success(let decodedData):
-            // TODO: Optionally inject mapper
-            let items: [Category] = decodedData.result.categories.map { item in
-                Category(id: "\(item.id)", parentID: "\(item.parent_id)",
-                         imageURL: item.image_url, size: item.size, title: item.title)
-            }
+            let items = mapper.map(response: decodedData)
             await categoriesStore.replace(with: items)
         case .failure(let providerError):
             // TODO: Handle error if needed

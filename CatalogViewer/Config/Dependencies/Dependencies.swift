@@ -42,11 +42,15 @@ let DI: Container = {
     container.register(ProductResponseMapperProtocol.self) { resolver in
         ProductResponseMapper()
     }
+    container.register(CategoryResponseMapperProtocol.self) { resolver in
+        CategoryResponseMapper()
+    }
     
     // Repositories
     container.register(CategoryRepositoryProtocol.self) { resolver in
         CategoryRepository(remoteProvider: resolver.resolve(CatalogProviderProtocol.self)!,
-                           categoriesStore:  resolver.resolve(PersistentRealmStore<Category>.self)!)
+                           categoriesStore:  resolver.resolve(PersistentRealmStore<Category>.self)!,
+                           mapper: resolver.resolve(CategoryResponseMapperProtocol.self)!)
     }
     container.register(ProductRepositoryProtocol.self) { resolver in
         ProductRepository(remoteProvider: resolver.resolve(CatalogProviderProtocol.self)!,

@@ -53,6 +53,7 @@
 		D4B6927729D602C400956D9A /* ProductVariant + PersistableDomainModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927629D602C400956D9A /* ProductVariant + PersistableDomainModelProtocol.swift */; };
 		D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927929D6031C00956D9A /* ProductVariant_DB.swift */; };
 		D4B6927C29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927B29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift */; };
+		D4B6927F29D6218B00956D9A /* CategoryResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927E29D6218B00956D9A /* CategoryResponseMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		D4B6927629D602C400956D9A /* ProductVariant + PersistableDomainModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant + PersistableDomainModelProtocol.swift"; sourceTree = "<group>"; };
 		D4B6927929D6031C00956D9A /* ProductVariant_DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariant_DB.swift; sourceTree = "<group>"; };
 		D4B6927B29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_DB + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
+		D4B6927E29D6218B00956D9A /* CategoryResponseMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryResponseMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +366,7 @@
 			isa = PBXGroup;
 			children = (
 				D40BC32329CF09F000B4A1E2 /* CategoryRepository.swift */,
+				D4B6927D29D6217200956D9A /* Mappers */,
 			);
 			path = CategoryRepository;
 			sourceTree = "<group>";
@@ -371,8 +374,8 @@
 		D40BC34129CF554900B4A1E2 /* ProductRepository */ = {
 			isa = PBXGroup;
 			children = (
-				D40BC34229CF555600B4A1E2 /* Mappers */,
 				D40BC33429CF15EF00B4A1E2 /* ProductRepository.swift */,
+				D40BC34229CF555600B4A1E2 /* Mappers */,
 			);
 			path = ProductRepository;
 			sourceTree = "<group>";
@@ -434,6 +437,14 @@
 				D4B6927B29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift */,
 			);
 			path = ProductVariant_DB;
+			sourceTree = "<group>";
+		};
+		D4B6927D29D6217200956D9A /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				D4B6927E29D6218B00956D9A /* CategoryResponseMapper.swift */,
+			);
+			path = Mappers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -547,6 +558,7 @@
 				D4A2451329D598670030C651 /* ProductScreenVM.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
 				D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */,
+				D4B6927F29D6218B00956D9A /* CategoryResponseMapper.swift in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVM.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
 				D40BC32C29CF107200B4A1E2 /* Product + PersistableDomainModelProtocol.swift in Sources */,
