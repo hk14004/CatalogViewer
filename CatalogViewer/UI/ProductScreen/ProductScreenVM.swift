@@ -2,7 +2,7 @@
 //  ProductScreenVM.swift
 //  CatalogViewer
 //
-//  Created by Hardijs Ķirsis on 24/03/2023.
+//  Created by Hardijs Ķirsis on 30/03/2023.
 //
 
 import SwiftUI
