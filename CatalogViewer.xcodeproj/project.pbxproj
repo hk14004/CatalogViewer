@@ -155,6 +155,7 @@
 		D40BC2EF29CE253100B4A1E2 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D4B6928029D6238C00956D9A /* Mappers */,
 				D40BC32229CF09BD00B4A1E2 /* Repositories */,
 				D40BC31229CEF66B00B4A1E2 /* Providers */,
 				D40BC2F029CE253D00B4A1E2 /* Models */,
@@ -366,7 +367,6 @@
 			isa = PBXGroup;
 			children = (
 				D40BC32329CF09F000B4A1E2 /* CategoryRepository.swift */,
-				D4B6927D29D6217200956D9A /* Mappers */,
 			);
 			path = CategoryRepository;
 			sourceTree = "<group>";
@@ -375,17 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				D40BC33429CF15EF00B4A1E2 /* ProductRepository.swift */,
-				D40BC34229CF555600B4A1E2 /* Mappers */,
 			);
 			path = ProductRepository;
-			sourceTree = "<group>";
-		};
-		D40BC34229CF555600B4A1E2 /* Mappers */ = {
-			isa = PBXGroup;
-			children = (
-				D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */,
-			);
-			path = Mappers;
 			sourceTree = "<group>";
 		};
 		D40BC34529CF75AF00B4A1E2 /* SuchEmptyView */ = {
@@ -439,10 +430,11 @@
 			path = ProductVariant_DB;
 			sourceTree = "<group>";
 		};
-		D4B6927D29D6217200956D9A /* Mappers */ = {
+		D4B6928029D6238C00956D9A /* Mappers */ = {
 			isa = PBXGroup;
 			children = (
 				D4B6927E29D6218B00956D9A /* CategoryResponseMapper.swift */,
+				D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";

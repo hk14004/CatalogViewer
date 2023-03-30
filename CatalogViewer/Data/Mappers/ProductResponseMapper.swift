@@ -20,7 +20,9 @@ extension ProductResponseMapper: ProductResponseMapperProtocol {
     func map(response: ProductDetailsResponse) -> [ProductVariant] {
         // TODO: Validate variant
         let items: [ProductVariant] = response.result.variants.map { item in
-            ProductVariant(id: "\(item.id)", productId: "\(item.product_id)", name: item.name, size: item.size, color: item.color, colorCode: item.color_code, colorCode2: item.color_code2, image: item.image, price: item.price, inStock: item.in_stock)
+            ProductVariant(id: "\(item.id)", productId: "\(item.product_id)", name: item.name,
+                           size: item.size, color: item.color, colorCode: item.color_code,
+                           colorCode2: item.color_code2, image: item.image, price: item.price, inStock: item.in_stock)
         }
         return items
     }
