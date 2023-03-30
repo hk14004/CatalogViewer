@@ -28,6 +28,9 @@ let DI: Container = {
     container.register(PersistentRealmStore<Product>.self) { resolver in
         PersistentRealmStore<Product>(dbConfig: resolver.resolve(Realm.Configuration.self)!)
     }
+    container.register(PersistentRealmStore<ProductVariant>.self) { resolver in
+        PersistentRealmStore<ProductVariant>(dbConfig: resolver.resolve(Realm.Configuration.self)!)
+    }
     
     // Providers
     container.register(CatalogProviderProtocol.self) { resolver in
@@ -47,8 +50,9 @@ let DI: Container = {
     }
     container.register(ProductRepositoryProtocol.self) { resolver in
         ProductRepository(remoteProvider: resolver.resolve(CatalogProviderProtocol.self)!,
-                          store: resolver.resolve(PersistentRealmStore<Product>.self)!,
-                          mapper: resolver.resolve(ProductResponseMapperProtocol.self)!)
+                          productsStore: resolver.resolve(PersistentRealmStore<Product>.self)!,
+                          mapper: resolver.resolve(ProductResponseMapperProtocol.self)!,
+                          productVariantStore: resolver.resolve(PersistentRealmStore<ProductVariant>.self)!)
     }
     
     return container

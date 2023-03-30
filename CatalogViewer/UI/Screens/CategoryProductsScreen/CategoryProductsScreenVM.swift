@@ -9,6 +9,10 @@ import SwiftUI
 import Combine
 import DevToolsUI
 
+protocol CategoryProductsScreenVMNavigationDelegate: AnyObject {
+    func categoryProductsScreenVM(vm: CategoryProductsScreenVM, showProductDetails product: Product)
+}
+
 class CategoryProductsScreenVM: ObservableObject {
     
     // MARK: Types
@@ -43,7 +47,7 @@ class CategoryProductsScreenVM: ObservableObject {
     // MARK: Properties
     
     // Public
-    //    weak var navigationDelegate: CategoriesScreenVMNavigationDelegate?
+    weak var navigationDelegate: CategoryProductsScreenVMNavigationDelegate?
     @Published var sections: [Section] = []
     
     // Private
@@ -60,6 +64,16 @@ class CategoryProductsScreenVM: ObservableObject {
         startup()
     }
 }
+
+// MARK: Private
+
+extension CategoryProductsScreenVM {
+    func onTap(product: Product) {
+        navigationDelegate?.categoryProductsScreenVM(vm: self, showProductDetails: product)
+    }
+}
+
+// MARK: Private
 
 extension CategoryProductsScreenVM {
     private func startup() {

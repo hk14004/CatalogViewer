@@ -11,7 +11,10 @@ import Moya
 
 protocol CatalogProviderProtocol {
     func getRemoteCategories(completion: @escaping (Result<CategoriesResponse, CatalogProviderError>)->())
-    func getRemoteProducts(categoryIds: [String], completion: @escaping (Result<ProductsResponse, CatalogProviderError>)->())
+    func getRemoteProducts(categoryIds: [String],
+                           completion: @escaping (Result<ProductsResponse, CatalogProviderError>)->())
+    func getRemoteProductDetails(productID: String,
+                                 completion: @escaping (Result<ProductDetailsResponse, CatalogProviderError>)->())
 }
 
 
@@ -22,7 +25,7 @@ class CatalogProvider {
     // Private
     private let provider: MoyaProvider<CatalogTarget>
     private let requestManager: RequestManager<CatalogTarget>
-
+    
     
     // MARK: Init
     
@@ -36,6 +39,31 @@ class CatalogProvider {
 // MARK: CatalogProviderProtocol
 
 extension CatalogProvider: CatalogProviderProtocol {
+    func getRemoteProductDetails(productID: String, completion: @escaping (Result<ProductDetailsResponse, CatalogProviderError>) -> ()) {
+        let target = CatalogTarget(endpoint: .getProductDetails, resourceIDs: ["\(productID)"])
+        let launched = requestManager.launchSingleUniqueRequest(requestID: target.defaultUUID, target: target, provider: provider,
+                                                                hookRunning: true, retryMethod: .default) { result in
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let response):
+                    do {
+                        let response = try JSONDecoder().decode(ProductDetailsResponse.self, from: response.data)
+                        completion(.success(response))
+                    } catch (let decodeError) {
+                        print(decodeError)
+                        completion(.failure(.responseDecodeIssue))
+                    }
+                case .failure(let err):
+                    completion(.failure(.fetchFailed(code: err.errorCode)))
+                }
+            }
+        }
+        
+        if !launched {
+            completion(.failure(CatalogProviderError.alreadyRunning))
+        }
+    }
+    
     func getRemoteProducts(categoryIds: [String], completion: @escaping (Result<ProductsResponse, CatalogProviderError>) -> ()) {
         guard !categoryIds.isEmpty else {
             completion(.failure(.userError(description: "Provide category id")))
@@ -45,17 +73,19 @@ extension CatalogProvider: CatalogProviderProtocol {
         let target = CatalogTarget(endpoint: .getProducts, urlParameters: [CatalogProviderField.category_id.rawValue: ids])
         let launched = requestManager.launchSingleUniqueRequest(requestID: target.defaultUUID, target: target, provider: provider,
                                                                 hookRunning: true, retryMethod: .default) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let response = try JSONDecoder().decode(ProductsResponse.self, from: response.data)
-                    completion(.success(response))
-                } catch (let decodeError) {
-                    print(decodeError)
-                    completion(.failure(.responseDecodeIssue))
+            DispatchQueue.global().async {
+                switch result {
+                case .success(let response):
+                    do {
+                        let response = try JSONDecoder().decode(ProductsResponse.self, from: response.data)
+                        completion(.success(response))
+                    } catch (let decodeError) {
+                        print(decodeError)
+                        completion(.failure(.responseDecodeIssue))
+                    }
+                case .failure(let err):
+                    completion(.failure(.fetchFailed(code: err.errorCode)))
                 }
-            case .failure(let err):
-                completion(.failure(.fetchFailed(code: err.errorCode)))
             }
         }
         

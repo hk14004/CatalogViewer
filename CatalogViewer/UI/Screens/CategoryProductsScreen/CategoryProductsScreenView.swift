@@ -43,7 +43,9 @@ extension CategoryProductsScreenView {
                     switch cell {
                     case .productGridItem(let item):
                         makeProductGridItemView(item: item)
-                            .padding(.top, 6)
+                            .onTapGesture {
+                                viewModel.onTap(product: item)
+                            }
                     case .redactedItem:
                         makeProductGridItemViewRedacted()
                     case .nothingToShow:
@@ -68,8 +70,8 @@ extension CategoryProductsScreenView {
                         .fade(duration: 0.3)
                         .forceTransition()
                         .scaledToFill()
-                        .clipped()
                 }
+                .clipped()
                 .cornerRadius(12)
                 .layoutPriority(2)
             Spacer()
@@ -80,6 +82,7 @@ extension CategoryProductsScreenView {
                 .layoutPriority(1)
             Spacer()
         }
+        .padding(.top, 6)
     }
     
     @ViewBuilder

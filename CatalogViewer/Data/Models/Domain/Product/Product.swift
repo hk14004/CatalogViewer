@@ -18,10 +18,6 @@ struct Product {
     let image: String
     let variantCount: Int
     let currencyID: String
-    
-    // Files?
-    // Options?
-    // Techniques?
 }
 
 extension Product: Equatable {}

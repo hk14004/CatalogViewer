@@ -19,7 +19,6 @@ class CategoriesCoordinator: NavigationCoordinator {
         vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoriesScreenView(viewModel: vm))
         router.push(vc, isAnimated: true, onNavigateBack: onFree)
-//        goToCategory(item: .init(id: "", parentID: "", imageURL: "", size: "", title: ""))
     }
     
     init(router: RouterProtocol) {
@@ -35,14 +34,30 @@ extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
     }
 }
 
+// MARK: CategoriesScreenVMNavigationDelegate
+
+extension CategoriesCoordinator: CategoryProductsScreenVMNavigationDelegate {
+    func categoryProductsScreenVM(vm: CategoryProductsScreenVM, showProductDetails product: Product) {
+        goToProductDetails(item: product)
+    }
+}
+
 // MARK: Private
 
 extension CategoriesCoordinator {
     private func goToCategory(item: Category) {
         let vm = CategoryProductsScreenVM(category: item,
                                           productsRepository: DI.resolve(ProductRepositoryProtocol.self)!)
+        vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoryProductsScreenView(viewModel: vm))
         vc.title = item.title
+        router.navigationController.pushViewController(vc, animated: true)
+    }
+    
+    private func goToProductDetails(item: Product) {
+        let vm = ProductScreenVM(product: item,
+                                 productsRepository: DI.resolve(ProductRepositoryProtocol.self)!)
+        let vc = UIHostingController(rootView: ProductScreenView(viewModel: vm))
         router.navigationController.pushViewController(vc, animated: true)
     }
 }

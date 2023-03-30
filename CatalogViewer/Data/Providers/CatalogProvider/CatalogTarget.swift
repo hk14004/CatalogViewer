@@ -14,6 +14,7 @@ struct CatalogTarget: RequestManagerTarget {
     enum Endpoint: String, CaseIterable {
         case getCategories
         case getProducts
+        case getProductDetails
     }
     
     var endpoint: Endpoint
@@ -40,6 +41,8 @@ struct CatalogTarget: RequestManagerTarget {
             return "/categories"
         case .getProducts:
             return "/products"
+        case .getProductDetails:
+            return "/products/\(resourceIDs![0])"
         }
     }
     
@@ -48,6 +51,8 @@ struct CatalogTarget: RequestManagerTarget {
         case .getCategories:
             return .get
         case .getProducts:
+            return .get
+        case .getProductDetails:
             return .get
         }
     }
