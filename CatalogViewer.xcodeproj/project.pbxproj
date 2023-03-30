@@ -782,7 +782,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hk14004/DevTools-Swift";
 			requirement = {
-				branch = "dev/persistance-layer";
+				branch = development;
 				kind = branch;
 			};
 		};
