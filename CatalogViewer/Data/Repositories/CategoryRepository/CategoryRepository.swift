@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import DevToolsRealm
+import DevTools
 
 protocol CategoryRepositoryProtocol {
     
@@ -20,19 +21,19 @@ protocol CategoryRepositoryProtocol {
 
 }
 
-class CategoryRepository {
+class CategoryRepository<CategoryStore: PersistedLayerInterface> where CategoryStore.T == Category {
     
     // MARK: Properties
     
     private let remoteProvider: CatalogProviderProtocol
-    private let categoriesStore: PersistentRealmStore<Category>
+    private let categoryStore: CategoryStore
     private let mapper: CategoryResponseMapperProtocol
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, categoriesStore: PersistentRealmStore<Category>, mapper: CategoryResponseMapperProtocol) {
+    init(remoteProvider: CatalogProviderProtocol, categoriesStore: CategoryStore, mapper: CategoryResponseMapperProtocol) {
         self.remoteProvider = remoteProvider
-        self.categoriesStore = categoriesStore
+        self.categoryStore = categoriesStore
         self.mapper = mapper
     }
     
@@ -41,7 +42,7 @@ class CategoryRepository {
 extension CategoryRepository: CategoryRepositoryProtocol {
     func getCategories() async -> [Category] {
         let key = Category_DB.PersistedField.title.rawValue
-        return await categoriesStore.getList(sortedByKeyPath: key, ascending: true)
+        return await categoryStore.getList(predicate: NSPredicate(value: true), sortedByKeyPath: key, ascending: true)
     }
     
     func refreshCategories() async {
@@ -53,7 +54,7 @@ extension CategoryRepository: CategoryRepositoryProtocol {
         switch result {
         case .success(let decodedData):
             let items = mapper.map(response: decodedData)
-            await categoriesStore.replace(with: items)
+            await categoryStore.replace(with: items)
         case .failure(let providerError):
             // TODO: Handle error if needed
             print(providerError)
@@ -62,7 +63,7 @@ extension CategoryRepository: CategoryRepositoryProtocol {
     
     func observeCategories() -> AnyPublisher<[Category], Never> {
         let key = Category_DB.PersistedField.title.rawValue
-        return categoriesStore.observeList(sortedByKeyPath: key, ascending: true)
+        return categoryStore.observeList(predicate: NSPredicate(value: true), sortedByKeyPath: key, ascending: true)
     }
     
 }

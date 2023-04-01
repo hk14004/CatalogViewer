@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import DevToolsRealm
+import DevTools
 
 protocol ProductRepositoryProtocol {
     
@@ -22,18 +23,18 @@ protocol ProductRepositoryProtocol {
     func observeProduct(id: String) -> AnyPublisher<Product?, Never>
 }
 
-class ProductRepository {
+class ProductRepository<ProductStore: PersistedLayerInterface> where ProductStore.T == Product {
     
     // MARK: Properties
     
     private let remoteProvider: CatalogProviderProtocol
-    private let productsStore: PersistentRealmStore<Product>
+    private let productsStore: ProductStore
     private let mapper: ProductResponseMapperProtocol
     private let productVariantStore: PersistentRealmStore<ProductVariant>
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, productsStore: PersistentRealmStore<Product>, mapper: ProductResponseMapperProtocol, productVariantStore: PersistentRealmStore<ProductVariant>) {
+    init(remoteProvider: CatalogProviderProtocol, productsStore: ProductStore, mapper: ProductResponseMapperProtocol, productVariantStore: PersistentRealmStore<ProductVariant>) {
         self.remoteProvider = remoteProvider
         self.productsStore = productsStore
         self.mapper = mapper
@@ -121,7 +122,7 @@ extension ProductRepository {
         guard let predicate = makeSearchPredicateForCategories(categoryIds: categoryIds) else {
             return
         }
-        let old = await productsStore.getList(predicate: predicate)
+        let old = await productsStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true)
         let _store = productsStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
