@@ -18,6 +18,7 @@ protocol CategoryRepositoryProtocol {
     // Local data
     func observeCategories() -> AnyPublisher<[Category], Never>
     func getCategories() async -> [Category]
+    func getCategoryPage(pageOptions: PagedRequestOptions) async -> PagedResult<Category>
 
 }
 
@@ -40,6 +41,13 @@ class CategoryRepository<CategoryStore: PersistedLayerInterface> where CategoryS
 }
 
 extension CategoryRepository: CategoryRepositoryProtocol {
+    func getCategoryPage(pageOptions: DevTools.PagedRequestOptions) async -> DevTools.PagedResult<Category> {
+        let key = Category_DB.PersistedField.title.rawValue
+        return await categoryStore.getListPage(pageOptions: pageOptions,
+                                               predicate: NSPredicate(value: true),
+                                               sortedByKeyPath: key, ascending: true)
+    }
+    
     func getCategories() async -> [Category] {
         let key = Category_DB.PersistedField.title.rawValue
         return await categoryStore.getList(predicate: NSPredicate(value: true), sortedByKeyPath: key, ascending: true)
