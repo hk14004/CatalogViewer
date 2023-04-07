@@ -23,7 +23,10 @@ extension Product_CD: PersistedModelProtocol {
     }
 
     public func toDomain(fields: Set<PersistedField>) throws -> Product {
-        return .init(id: self.id ?? "", mainCategoryID: self.mainCategoryID ?? "", type: self.type ?? "", typeName: self.typeName ?? "", title: self.title ?? "", brand: self.brand ?? "", model: self.model ?? "", image: self.image ?? "", variantCount: self.variantCount ?? "", currencyID: self.currencyID ?? "")
+        return .init(id: self.id ?? "", mainCategoryID: self.mainCategoryID ?? "", type: self.type ?? "",
+                     typeName: self.typeName ?? "", title: self.title ?? "", brand: self.brand ?? "",
+                     model: self.model ?? "", image: self.image ?? "", variantCount: Int(self.variantCount),
+                     currencyID: self.currencyID ?? "")
     }
 
     public func update(with model: Product, fields: Set<PersistedField>) {
@@ -36,7 +39,7 @@ extension Product_CD: PersistedModelProtocol {
         self.brand = model.brand
         self.model = model.model
         self.image = model.image
-        self.variantCount = model.variantCount
+        self.variantCount = Int64(model.variantCount)
         self.currencyID = model.currencyID
     }
 }
