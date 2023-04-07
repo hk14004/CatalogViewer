@@ -47,8 +47,6 @@
 		D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */; };
 		D40BC34B29D2050900B4A1E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34A29D2050900B4A1E2 /* Constants.swift */; };
 		D40F3EEE29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
-		D44668ED29E06057005B2984 /* Dependencies + CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668EC29E06057005B2984 /* Dependencies + CoreData.swift */; };
-		D44668EF29E06216005B2984 /* Dependencies + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668EE29E06216005B2984 /* Dependencies + Realm.swift */; };
 		D44668F229E071BC005B2984 /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D44668F129E071BC005B2984 /* DevToolsCoreData */; };
 		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
 		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
@@ -99,8 +97,6 @@
 		D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuchEmptyView.swift; sourceTree = "<group>"; };
 		D40BC34A29D2050900B4A1E2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
-		D44668EC29E06057005B2984 /* Dependencies + CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dependencies + CoreData.swift"; sourceTree = "<group>"; };
-		D44668EE29E06216005B2984 /* Dependencies + Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dependencies + Realm.swift"; sourceTree = "<group>"; };
 		D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D4A2451029D598580030C651 /* ProductScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenView.swift; sourceTree = "<group>"; };
@@ -374,8 +370,6 @@
 			isa = PBXGroup;
 			children = (
 				D40BC33729CF1C5C00B4A1E2 /* Dependencies.swift */,
-				D44668EC29E06057005B2984 /* Dependencies + CoreData.swift */,
-				D44668EE29E06216005B2984 /* Dependencies + Realm.swift */,
 			);
 			path = Dependencies;
 			sourceTree = "<group>";
@@ -597,7 +591,6 @@
 				D40BC32429CF09F000B4A1E2 /* CategoryRepository.swift in Sources */,
 				D4B6927C29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift in Sources */,
 				D40BC30E29CE487300B4A1E2 /* String + ext.swift in Sources */,
-				D44668EF29E06216005B2984 /* Dependencies + Realm.swift in Sources */,
 				D40BC31829CEF7B900B4A1E2 /* CategoriesResponse.swift in Sources */,
 				D40BC2FA29CE288300B4A1E2 /* AppCoordinator.swift in Sources */,
 				D40BC34B29D2050900B4A1E2 /* Constants.swift in Sources */,
@@ -606,7 +599,6 @@
 				D40BC33129CF11F600B4A1E2 /* Category_DB + PersistedModelProtocol.swift in Sources */,
 				D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */,
 				D40BC32129CF009F00B4A1E2 /* CatalogProviderError.swift in Sources */,
-				D44668ED29E06057005B2984 /* Dependencies + CoreData.swift in Sources */,
 				D40BC33829CF1C5C00B4A1E2 /* Dependencies.swift in Sources */,
 				D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */,
 				D40BC33329CF120B00B4A1E2 /* Category + PersistableDomainModelProtocol.swift in Sources */,
