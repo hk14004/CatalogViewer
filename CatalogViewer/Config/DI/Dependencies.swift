@@ -16,8 +16,8 @@ let DI: Container = {
     
     // MARK: Data
     
-//    DI_CORE_DATA(container)
-    DI_REALM(container)
+    DI_CORE_DATA(container)
+//    DI_REALM(container)
 
     // Providers
     container.register(CatalogProviderProtocol.self) { resolver in

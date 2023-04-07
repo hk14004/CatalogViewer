@@ -37,11 +37,6 @@ let DI_CORE_DATA: (Container)->() = { diContainer in
                      */
                     fatalError("Unresolved error \(error), \(error.userInfo)")
                 }
-                
-                diContainer.register(NSManagedObjectContext.self) { resolver in
-                    return container.newBackgroundContext()
-                }
-                
             })
             return container
         }()
@@ -49,8 +44,20 @@ let DI_CORE_DATA: (Container)->() = { diContainer in
         return persistentContainer
     }
 
+    diContainer.register(NSManagedObjectContext.self) { resolver in
+        let container = resolver.resolve(NSPersistentContainer.self)!
+        return container.newBackgroundContext()
+    }
     
     diContainer.register(BasePersistedLayerInterface<Category>.self) { resolver in
         PersistentCoreDataStore<Category>(context: resolver.resolve(NSManagedObjectContext.self)!)
+    }
+    
+    diContainer.register(BasePersistedLayerInterface<Product>.self) { resolver in
+        PersistentCoreDataStore<Product>(context: resolver.resolve(NSManagedObjectContext.self)!)
+    }
+    
+    diContainer.register(BasePersistedLayerInterface<ProductVariant>.self) { resolver in
+        PersistentCoreDataStore<ProductVariant>(context: resolver.resolve(NSManagedObjectContext.self)!)
     }
 }
