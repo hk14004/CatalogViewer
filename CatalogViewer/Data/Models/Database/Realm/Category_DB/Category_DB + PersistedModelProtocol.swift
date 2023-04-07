@@ -10,7 +10,7 @@ import DevTools
 
 extension Category_DB: PersistedModelProtocol {
         
-    enum PersistedField: String, PersistedModelFieldProtocol {
+   public  enum PersistedField: String, PersistedModelFieldProtocol {
         case id
         case parentID
         case imageURL
@@ -18,11 +18,11 @@ extension Category_DB: PersistedModelProtocol {
         case title
     }
     
-    func toDomain(fields: Set<PersistedField>) throws -> Category {
+    public func toDomain(fields: Set<PersistedField>) throws -> Category {
         return .init(id: self.id, parentID: self.parentID, imageURL: self.imageURL, size: self.size, title: self.title)
     }
     
-    func update(with model: Category, fields: Set<PersistedField>) {
+    public func update(with model: Category, fields: Set<PersistedField>) {
         // TODO: Handle fields if needed
         self.id = model.id
         self.parentID = model.parentID

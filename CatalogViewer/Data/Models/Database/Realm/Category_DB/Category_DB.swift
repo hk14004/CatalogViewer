@@ -9,9 +9,9 @@ import Foundation
 import DevToolsRealm
 import RealmSwift
 
-class Category_DB: Object {
+public class Category_DB: Object {
     
-    @Persisted(primaryKey: true) var id: String
+    @Persisted(primaryKey: true) public var id: String
     @Persisted var parentID: String
     @Persisted var imageURL: String
     @Persisted var size: String
