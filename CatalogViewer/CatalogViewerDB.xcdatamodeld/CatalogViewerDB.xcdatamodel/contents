@@ -19,4 +19,15 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="variantCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="ProductVariant_CD" representedClassName="Product_CD" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="colorCode" optional="YES" attributeType="String"/>
+        <attribute name="colorCode2" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="inStock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="productId" optional="YES" attributeType="String"/>
+    </entity>
 </model>
