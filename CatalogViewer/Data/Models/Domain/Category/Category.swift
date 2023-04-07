@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Category {
-    let id: String
+public struct Category {
+    public let id: String
     let parentID: String
     let imageURL: String
     let size: String

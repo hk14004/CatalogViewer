@@ -23,18 +23,18 @@ protocol ProductRepositoryProtocol {
     func observeProduct(id: String) -> AnyPublisher<Product?, Never>
 }
 
-class ProductRepository<ProductStore: PersistedLayerInterface> where ProductStore.T == Product {
+class ProductRepository<ProductStore: PersistedLayerInterface, VariantStore: PersistedLayerInterface> where ProductStore.T == Product, VariantStore.T == ProductVariant {
     
     // MARK: Properties
     
     private let remoteProvider: CatalogProviderProtocol
     private let productsStore: ProductStore
     private let mapper: ProductResponseMapperProtocol
-    private let productVariantStore: PersistentRealmStore<ProductVariant>
+    private let productVariantStore: VariantStore
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, productsStore: ProductStore, mapper: ProductResponseMapperProtocol, productVariantStore: PersistentRealmStore<ProductVariant>) {
+    init(remoteProvider: CatalogProviderProtocol, productsStore: ProductStore, mapper: ProductResponseMapperProtocol, productVariantStore: VariantStore) {
         self.remoteProvider = remoteProvider
         self.productsStore = productsStore
         self.mapper = mapper
@@ -108,7 +108,7 @@ extension ProductRepository {
         // 1. Fetch old variants and delete them
         // 2. Add new variants
         let predicate = NSPredicate(format: "\(ProductVariant_DB.PersistedField.productId) == '\(productID)'")
-        let old = await productVariantStore.getList(predicate: predicate)
+        let old = await productVariantStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true)
         let _store = productVariantStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
