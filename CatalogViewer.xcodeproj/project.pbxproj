@@ -46,9 +46,9 @@
 		D40BC34429CF558400B4A1E2 /* ProductResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */; };
 		D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */; };
 		D40BC34B29D2050900B4A1E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34A29D2050900B4A1E2 /* Constants.swift */; };
-		D40F3EEE29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
 		D415D8AA29E0893000129E36 /* Dependencies + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D8A829E0893000129E36 /* Dependencies + Realm.swift */; };
 		D415D8AB29E0893000129E36 /* Dependencies + CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D8A929E0893000129E36 /* Dependencies + CoreData.swift */; };
+		D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
 		D44668F229E071BC005B2984 /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D44668F129E071BC005B2984 /* DevToolsCoreData */; };
 		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
 		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
@@ -616,6 +616,7 @@
 				D415D8AB29E0893000129E36 /* Dependencies + CoreData.swift in Sources */,
 				D40BC30829CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift in Sources */,
 				D40BC33F29CF3C3D00B4A1E2 /* CatalogProviderField.swift in Sources */,
+				D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32F29CF11E600B4A1E2 /* Category_DB.swift in Sources */,
 				D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */,
 				D4A2451329D598670030C651 /* ProductScreenVM.swift in Sources */,
@@ -625,7 +626,6 @@
 				D4B6927F29D6218B00956D9A /* CategoryResponseMapper.swift in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVM.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
-				D40F3EEE29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */,
 				D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32C29CF107200B4A1E2 /* Product + PersistableDomainModelProtocol.swift in Sources */,
 				D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */,
