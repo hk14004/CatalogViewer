@@ -9,5 +9,5 @@ import DevTools
 import CoreData
 
 extension Product: PersistableDomainModelProtocol {
-    public typealias StoreType = Product_DB
+    public typealias StoreType = Product_CD
 }

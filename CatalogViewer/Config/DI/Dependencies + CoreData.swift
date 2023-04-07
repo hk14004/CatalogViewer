@@ -49,15 +49,15 @@ let DI_CORE_DATA: (Container)->() = { diContainer in
         return container.newBackgroundContext()
     }
     
-//    diContainer.register(BasePersistedLayerInterface<Category>.self) { resolver in
-//        PersistentCoreDataStore<Category>(context: resolver.resolve(NSManagedObjectContext.self)!)
-//    }
-//    
-//    diContainer.register(BasePersistedLayerInterface<Product>.self) { resolver in
-//        PersistentCoreDataStore<Product>(context: resolver.resolve(NSManagedObjectContext.self)!)
-//    }
-//    
-//    diContainer.register(BasePersistedLayerInterface<ProductVariant>.self) { resolver in
-//        PersistentCoreDataStore<ProductVariant>(context: resolver.resolve(NSManagedObjectContext.self)!)
-//    }
+    diContainer.register(BasePersistedLayerInterface<Category>.self) { resolver in
+        PersistentCoreDataStore<Category>(context: resolver.resolve(NSManagedObjectContext.self)!)
+    }
+    
+    diContainer.register(BasePersistedLayerInterface<Product>.self) { resolver in
+        PersistentCoreDataStore<Product>(context: resolver.resolve(NSManagedObjectContext.self)!)
+    }
+    
+    diContainer.register(BasePersistedLayerInterface<ProductVariant>.self) { resolver in
+        PersistentCoreDataStore<ProductVariant>(context: resolver.resolve(NSManagedObjectContext.self)!)
+    }
 }
