@@ -41,7 +41,7 @@ class ProductScreenVM: ObservableObject {
 extension ProductScreenVM {
     private func startup() {
         // TODO: Observe product details, variants. Fetch more details etc
-//        observeProduct()
+        observeProduct()
     }
     
     private func observeProduct() {

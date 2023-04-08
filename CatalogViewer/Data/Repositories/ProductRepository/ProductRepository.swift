@@ -21,6 +21,8 @@ protocol ProductRepositoryProtocol {
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never>
     func getProducts(categoryIds: [String]) async -> [Product]
     func observeProduct(id: String) -> AnyPublisher<Product?, Never>
+    func deleteProducts(ids: [String]) async
+    func addOrUpdate(product: Product) async
 }
 
 class ProductRepository<ProductStore: PersistedLayerInterface, VariantStore: PersistedLayerInterface> where ProductStore.T == Product, VariantStore.T == ProductVariant {
@@ -44,6 +46,14 @@ class ProductRepository<ProductStore: PersistedLayerInterface, VariantStore: Per
 }
 
 extension ProductRepository: ProductRepositoryProtocol {
+    func addOrUpdate(product: Product) async {
+        await productsStore.addOrUpdate([product])
+    }
+    
+    func deleteProducts(ids: [String]) async {
+        await productsStore.delete(ids)
+    }
+    
     func observeProduct(id: String) -> AnyPublisher<Product?, Never> {
         return productsStore.observeSingle(id: id)
     }
@@ -108,7 +118,7 @@ extension ProductRepository {
         // 1. Fetch old variants and delete them
         // 2. Add new variants
         let predicate = NSPredicate(format: "\(ProductVariant_DB.PersistedField.productId) == '\(productID)'")
-        let old = await productVariantStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true)
+        let old = await productVariantStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
         let _store = productVariantStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
@@ -122,7 +132,7 @@ extension ProductRepository {
         guard let predicate = makeSearchPredicateForCategories(categoryIds: categoryIds) else {
             return
         }
-        let old = await productsStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true)
+        let old = await productsStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
         let _store = productsStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
