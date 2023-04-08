@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import DevToolsRealm
 import DevTools
 
 protocol ProductRepositoryProtocol {
@@ -80,7 +79,7 @@ extension ProductRepository: ProductRepositoryProtocol {
     func getProducts(categoryIds: [String]) async -> [Product] {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
         return await productsStore.getList(predicate: predcate,
-                                   sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                                   sortedByKeyPath: Product_CD.PersistedField.title.rawValue,
                                    ascending: true)
     }
     
@@ -104,7 +103,7 @@ extension ProductRepository: ProductRepositoryProtocol {
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never> {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
         return productsStore.observeList(predicate: predcate,
-                                 sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                                 sortedByKeyPath: Product_CD.PersistedField.title.rawValue,
                                  ascending: true)
     }
     
@@ -117,7 +116,7 @@ extension ProductRepository {
     private func replaceProductVariants(withVariants variants: [ProductVariant], forProduct productID: String) async {
         // 1. Fetch old variants and delete them
         // 2. Add new variants
-        let predicate = NSPredicate(format: "\(ProductVariant_DB.PersistedField.productId) == '\(productID)'")
+        let predicate = NSPredicate(format: "\(ProductVariant_CD.PersistedField.productId) == '\(productID)'")
         let old = await productVariantStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
         let _store = productVariantStore
         await _store.bulkWrite(operations: [
@@ -146,7 +145,7 @@ extension ProductRepository {
         }
         
         let predicates = categoryIds.map { categoryID in
-            NSPredicate(format: "\(Product_DB.PersistedField.mainCategoryID) == '\(categoryID)'")
+            NSPredicate(format: "\(Product_CD.PersistedField.mainCategoryID) == '\(categoryID)'")
         }
         
         let compound = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)

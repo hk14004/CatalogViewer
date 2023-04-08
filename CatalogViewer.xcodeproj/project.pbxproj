@@ -11,11 +11,6 @@
 		D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */; };
 		D40BC2DA29CE1E1400B4A1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */; };
 		D40BC2DD29CE1E1400B4A1E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2DB29CE1E1400B4A1E2 /* LaunchScreen.storyboard */; };
-		D40BC2E629CE212700B4A1E2 /* DevTools in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E529CE212700B4A1E2 /* DevTools */; };
-		D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */; };
-		D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */; };
-		D40BC2EC29CE212700B4A1E2 /* DevToolsRealm in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */; };
-		D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2ED29CE212700B4A1E2 /* DevToolsUI */; };
 		D40BC2F429CE259800B4A1E2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F329CE259800B4A1E2 /* Category.swift */; };
 		D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F629CE261900B4A1E2 /* Product.swift */; };
 		D40BC2FA29CE288300B4A1E2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F929CE288300B4A1E2 /* AppCoordinator.swift */; };
@@ -49,9 +44,13 @@
 		D415D8AA29E0893000129E36 /* Dependencies + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D8A829E0893000129E36 /* Dependencies + Realm.swift */; };
 		D415D8AB29E0893000129E36 /* Dependencies + CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D8A929E0893000129E36 /* Dependencies + CoreData.swift */; };
 		D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
-		D44668F229E071BC005B2984 /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D44668F129E071BC005B2984 /* DevToolsCoreData */; };
 		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
 		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
+		D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D491419E29E19D1B004E6DED /* DevToolsCoreData */; };
+		D49141A129E19D1B004E6DED /* DevToolsNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A029E19D1B004E6DED /* DevToolsNavigation */; };
+		D49141A329E19D1B004E6DED /* DevToolsNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A229E19D1B004E6DED /* DevToolsNetworking */; };
+		D49141A529E19D1B004E6DED /* DevToolsUI in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A429E19D1B004E6DED /* DevToolsUI */; };
+		D49141A729E19D5F004E6DED /* DevToolsRealm in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A629E19D5F004E6DED /* DevToolsRealm */; };
 		D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2451029D598580030C651 /* ProductScreenView.swift */; };
 		D4A2451329D598670030C651 /* ProductScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2451229D598670030C651 /* ProductScreenVM.swift */; };
 		D4A47FB129DDE6650047B7A0 /* CatalogViewerDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4A47FAF29DDE6650047B7A0 /* CatalogViewerDB.xcdatamodeld */; };
@@ -120,13 +119,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40BC31129CEE00000B4A1E2 /* Kingfisher in Frameworks */,
-				D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */,
 				D40BC33B29CF1C9C00B4A1E2 /* Swinject in Frameworks */,
-				D44668F229E071BC005B2984 /* DevToolsCoreData in Frameworks */,
-				D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */,
-				D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */,
-				D40BC2EC29CE212700B4A1E2 /* DevToolsRealm in Frameworks */,
-				D40BC2E629CE212700B4A1E2 /* DevTools in Frameworks */,
+				D49141A729E19D5F004E6DED /* DevToolsRealm in Frameworks */,
+				D49141A129E19D1B004E6DED /* DevToolsNavigation in Frameworks */,
+				D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */,
+				D49141A529E19D1B004E6DED /* DevToolsUI in Frameworks */,
+				D49141A329E19D1B004E6DED /* DevToolsNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,14 +522,13 @@
 			);
 			name = CatalogViewer;
 			packageProductDependencies = (
-				D40BC2E529CE212700B4A1E2 /* DevTools */,
-				D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */,
-				D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */,
-				D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */,
-				D40BC2ED29CE212700B4A1E2 /* DevToolsUI */,
 				D40BC31029CEE00000B4A1E2 /* Kingfisher */,
 				D40BC33A29CF1C9C00B4A1E2 /* Swinject */,
-				D44668F129E071BC005B2984 /* DevToolsCoreData */,
+				D491419E29E19D1B004E6DED /* DevToolsCoreData */,
+				D49141A029E19D1B004E6DED /* DevToolsNavigation */,
+				D49141A229E19D1B004E6DED /* DevToolsNetworking */,
+				D49141A429E19D1B004E6DED /* DevToolsUI */,
+				D49141A629E19D5F004E6DED /* DevToolsRealm */,
 			);
 			productName = CatalogViewer;
 			productReference = D40BC2CD29CE1E1300B4A1E2 /* CatalogViewer.app */;
@@ -562,9 +559,9 @@
 			);
 			mainGroup = D40BC2C429CE1E1300B4A1E2;
 			packageReferences = (
-				D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */,
 				D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				D40BC33929CF1C9C00B4A1E2 /* XCRemoteSwiftPackageReference "Swinject" */,
+				D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */,
 			);
 			productRefGroup = D40BC2CE29CE1E1300B4A1E2 /* Products */;
 			projectDirPath = "";
@@ -853,14 +850,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hk14004/DevTools-Swift";
-			requirement = {
-				branch = development;
-				kind = branch;
-			};
-		};
 		D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -877,34 +866,17 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hk14004/DevTools-Swift";
+			requirement = {
+				branch = development;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D40BC2E529CE212700B4A1E2 /* DevTools */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevTools;
-		};
-		D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsNavigation;
-		};
-		D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsNetworking;
-		};
-		D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsRealm;
-		};
-		D40BC2ED29CE212700B4A1E2 /* DevToolsUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsUI;
-		};
 		D40BC31029CEE00000B4A1E2 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -915,10 +887,30 @@
 			package = D40BC33929CF1C9C00B4A1E2 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
 		};
-		D44668F129E071BC005B2984 /* DevToolsCoreData */ = {
+		D491419E29E19D1B004E6DED /* DevToolsCoreData */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
 			productName = DevToolsCoreData;
+		};
+		D49141A029E19D1B004E6DED /* DevToolsNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsNavigation;
+		};
+		D49141A229E19D1B004E6DED /* DevToolsNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsNetworking;
+		};
+		D49141A429E19D1B004E6DED /* DevToolsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsUI;
+		};
+		D49141A629E19D5F004E6DED /* DevToolsRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsRealm;
 		};
 /* End XCSwiftPackageProductDependency section */
 
