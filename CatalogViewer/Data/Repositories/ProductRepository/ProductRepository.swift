@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import DevToolsRealm
 import DevTools
 
 protocol ProductRepositoryProtocol {
@@ -21,20 +20,22 @@ protocol ProductRepositoryProtocol {
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never>
     func getProducts(categoryIds: [String]) async -> [Product]
     func observeProduct(id: String) -> AnyPublisher<Product?, Never>
+    func deleteProducts(ids: [String]) async
+    func addOrUpdate(product: Product) async
 }
 
-class ProductRepository<ProductStore: PersistedLayerInterface> where ProductStore.T == Product {
+class ProductRepository<ProductStore: PersistedLayerInterface, VariantStore: PersistedLayerInterface> where ProductStore.T == Product, VariantStore.T == ProductVariant {
     
     // MARK: Properties
     
     private let remoteProvider: CatalogProviderProtocol
     private let productsStore: ProductStore
     private let mapper: ProductResponseMapperProtocol
-    private let productVariantStore: PersistentRealmStore<ProductVariant>
+    private let productVariantStore: VariantStore
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, productsStore: ProductStore, mapper: ProductResponseMapperProtocol, productVariantStore: PersistentRealmStore<ProductVariant>) {
+    init(remoteProvider: CatalogProviderProtocol, productsStore: ProductStore, mapper: ProductResponseMapperProtocol, productVariantStore: VariantStore) {
         self.remoteProvider = remoteProvider
         self.productsStore = productsStore
         self.mapper = mapper
@@ -44,6 +45,14 @@ class ProductRepository<ProductStore: PersistedLayerInterface> where ProductStor
 }
 
 extension ProductRepository: ProductRepositoryProtocol {
+    func addOrUpdate(product: Product) async {
+        await productsStore.addOrUpdate([product])
+    }
+    
+    func deleteProducts(ids: [String]) async {
+        await productsStore.delete(ids)
+    }
+    
     func observeProduct(id: String) -> AnyPublisher<Product?, Never> {
         return productsStore.observeSingle(id: id)
     }
@@ -70,7 +79,7 @@ extension ProductRepository: ProductRepositoryProtocol {
     func getProducts(categoryIds: [String]) async -> [Product] {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
         return await productsStore.getList(predicate: predcate,
-                                   sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                                   sortedByKeyPath: Product_CD.PersistedField.title.rawValue,
                                    ascending: true)
     }
     
@@ -94,7 +103,7 @@ extension ProductRepository: ProductRepositoryProtocol {
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never> {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
         return productsStore.observeList(predicate: predcate,
-                                 sortedByKeyPath: Product_DB.PersistedField.title.rawValue,
+                                 sortedByKeyPath: Product_CD.PersistedField.title.rawValue,
                                  ascending: true)
     }
     
@@ -107,8 +116,8 @@ extension ProductRepository {
     private func replaceProductVariants(withVariants variants: [ProductVariant], forProduct productID: String) async {
         // 1. Fetch old variants and delete them
         // 2. Add new variants
-        let predicate = NSPredicate(format: "\(ProductVariant_DB.PersistedField.productId) == '\(productID)'")
-        let old = await productVariantStore.getList(predicate: predicate)
+        let predicate = NSPredicate(format: "\(ProductVariant_CD.PersistedField.productId) == '\(productID)'")
+        let old = await productVariantStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
         let _store = productVariantStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
@@ -122,7 +131,7 @@ extension ProductRepository {
         guard let predicate = makeSearchPredicateForCategories(categoryIds: categoryIds) else {
             return
         }
-        let old = await productsStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true)
+        let old = await productsStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
         let _store = productsStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
@@ -136,7 +145,7 @@ extension ProductRepository {
         }
         
         let predicates = categoryIds.map { categoryID in
-            NSPredicate(format: "\(Product_DB.PersistedField.mainCategoryID) == '\(categoryID)'")
+            NSPredicate(format: "\(Product_CD.PersistedField.mainCategoryID) == '\(categoryID)'")
         }
         
         let compound = NSCompoundPredicate(orPredicateWithSubpredicates: predicates)

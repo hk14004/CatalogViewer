@@ -87,7 +87,7 @@ extension CategoryProductsScreenVM {
             // Load DB cache and display again, this time we know if there is no data
             await updateProductsSection()
             // Observe and react to DB changes
-            observeCachedData()
+//            observeCachedData()
         }
     }
     

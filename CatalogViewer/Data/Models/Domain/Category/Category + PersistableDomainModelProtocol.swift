@@ -6,7 +6,8 @@
 //
 
 import DevTools
+import CoreData
 
 extension Category: PersistableDomainModelProtocol {
-    typealias StoreType = Category_DB
+    public typealias StoreType = Category_CD
 }

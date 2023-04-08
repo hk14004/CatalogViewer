@@ -11,11 +11,6 @@
 		D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */; };
 		D40BC2DA29CE1E1400B4A1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */; };
 		D40BC2DD29CE1E1400B4A1E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2DB29CE1E1400B4A1E2 /* LaunchScreen.storyboard */; };
-		D40BC2E629CE212700B4A1E2 /* DevTools in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E529CE212700B4A1E2 /* DevTools */; };
-		D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */; };
-		D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */; };
-		D40BC2EC29CE212700B4A1E2 /* DevToolsRealm in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */; };
-		D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */ = {isa = PBXBuildFile; productRef = D40BC2ED29CE212700B4A1E2 /* DevToolsUI */; };
 		D40BC2F429CE259800B4A1E2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F329CE259800B4A1E2 /* Category.swift */; };
 		D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F629CE261900B4A1E2 /* Product.swift */; };
 		D40BC2FA29CE288300B4A1E2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2F929CE288300B4A1E2 /* AppCoordinator.swift */; };
@@ -46,6 +41,17 @@
 		D40BC34429CF558400B4A1E2 /* ProductResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */; };
 		D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */; };
 		D40BC34B29D2050900B4A1E2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34A29D2050900B4A1E2 /* Constants.swift */; };
+		D415D8AA29E0893000129E36 /* Dependencies + Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D8A829E0893000129E36 /* Dependencies + Realm.swift */; };
+		D415D8AB29E0893000129E36 /* Dependencies + CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D415D8A929E0893000129E36 /* Dependencies + CoreData.swift */; };
+		D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
+		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
+		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
+		D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D491419E29E19D1B004E6DED /* DevToolsCoreData */; };
+		D49141A129E19D1B004E6DED /* DevToolsNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A029E19D1B004E6DED /* DevToolsNavigation */; };
+		D49141A329E19D1B004E6DED /* DevToolsNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A229E19D1B004E6DED /* DevToolsNetworking */; };
+		D49141A529E19D1B004E6DED /* DevToolsUI in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A429E19D1B004E6DED /* DevToolsUI */; };
+		D49141A729E19D5F004E6DED /* DevToolsRealm in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A629E19D5F004E6DED /* DevToolsRealm */; };
+		D49141AA29E1A555004E6DED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D49141A829E1A555004E6DED /* Model.xcdatamodeld */; };
 		D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2451029D598580030C651 /* ProductScreenView.swift */; };
 		D4A2451329D598670030C651 /* ProductScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A2451229D598670030C651 /* ProductScreenVM.swift */; };
 		D4B6927229D5FB9100956D9A /* ProductDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927129D5FB9100956D9A /* ProductDetailsResponse.swift */; };
@@ -91,6 +97,12 @@
 		D40BC34329CF558400B4A1E2 /* ProductResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseMapper.swift; sourceTree = "<group>"; };
 		D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuchEmptyView.swift; sourceTree = "<group>"; };
 		D40BC34A29D2050900B4A1E2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
+		D415D8A829E0893000129E36 /* Dependencies + Realm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dependencies + Realm.swift"; sourceTree = "<group>"; };
+		D415D8A929E0893000129E36 /* Dependencies + CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dependencies + CoreData.swift"; sourceTree = "<group>"; };
+		D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
+		D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
+		D49141A929E1A555004E6DED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D4A2451029D598580030C651 /* ProductScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenView.swift; sourceTree = "<group>"; };
 		D4A2451229D598670030C651 /* ProductScreenVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenVM.swift; sourceTree = "<group>"; };
 		D4B6927129D5FB9100956D9A /* ProductDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsResponse.swift; sourceTree = "<group>"; };
@@ -107,12 +119,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D40BC31129CEE00000B4A1E2 /* Kingfisher in Frameworks */,
-				D40BC2E829CE212700B4A1E2 /* DevToolsNavigation in Frameworks */,
 				D40BC33B29CF1C9C00B4A1E2 /* Swinject in Frameworks */,
-				D40BC2EE29CE212700B4A1E2 /* DevToolsUI in Frameworks */,
-				D40BC2EA29CE212700B4A1E2 /* DevToolsNetworking in Frameworks */,
-				D40BC2EC29CE212700B4A1E2 /* DevToolsRealm in Frameworks */,
-				D40BC2E629CE212700B4A1E2 /* DevTools in Frameworks */,
+				D49141A729E19D5F004E6DED /* DevToolsRealm in Frameworks */,
+				D49141A129E19D1B004E6DED /* DevToolsNavigation in Frameworks */,
+				D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */,
+				D49141A529E19D1B004E6DED /* DevToolsUI in Frameworks */,
+				D49141A329E19D1B004E6DED /* DevToolsNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +136,7 @@
 			children = (
 				D40BC2CF29CE1E1300B4A1E2 /* CatalogViewer */,
 				D40BC2CE29CE1E1300B4A1E2 /* Products */,
+				D44668F029E071BC005B2984 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +161,7 @@
 				D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */,
 				D40BC2DB29CE1E1400B4A1E2 /* LaunchScreen.storyboard */,
 				D40BC2DE29CE1E1400B4A1E2 /* Info.plist */,
+				D49141A829E1A555004E6DED /* Model.xcdatamodeld */,
 			);
 			path = CatalogViewer;
 			sourceTree = "<group>";
@@ -303,7 +317,7 @@
 		D40BC31B29CEFBC800B4A1E2 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				D40BC33629CF1C1900B4A1E2 /* Dependencies */,
+				D415D8A329E088D800129E36 /* DI */,
 				D40BC31C29CEFBF300B4A1E2 /* Hosts */,
 				D40BC34929D2050000B4A1E2 /* Constants */,
 			);
@@ -330,9 +344,8 @@
 		D40BC32529CF0DC300B4A1E2 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				D4B6927829D602E300956D9A /* ProductVariant_DB */,
-				D40BC32D29CF11CE00B4A1E2 /* Category_DB */,
-				D40BC32629CF0DEF00B4A1E2 /* Product_DB */,
+				D44668F429E0731A005B2984 /* CoreData */,
+				D44668F329E07312005B2984 /* Realm */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -353,14 +366,6 @@
 				D40BC33029CF11F600B4A1E2 /* Category_DB + PersistedModelProtocol.swift */,
 			);
 			path = Category_DB;
-			sourceTree = "<group>";
-		};
-		D40BC33629CF1C1900B4A1E2 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				D40BC33729CF1C5C00B4A1E2 /* Dependencies.swift */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		D40BC34029CF553E00B4A1E2 /* CategoryRepository */ = {
@@ -401,6 +406,67 @@
 				D40BC34A29D2050900B4A1E2 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		D40F3EEF29E083A1007558B6 /* ProductVariant_CD */ = {
+			isa = PBXGroup;
+			children = (
+				D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */,
+			);
+			path = ProductVariant_CD;
+			sourceTree = "<group>";
+		};
+		D415D8A329E088D800129E36 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				D415D8A929E0893000129E36 /* Dependencies + CoreData.swift */,
+				D415D8A829E0893000129E36 /* Dependencies + Realm.swift */,
+				D40BC33729CF1C5C00B4A1E2 /* Dependencies.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		D44668F029E071BC005B2984 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D44668F329E07312005B2984 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				D4B6927829D602E300956D9A /* ProductVariant_DB */,
+				D40BC32D29CF11CE00B4A1E2 /* Category_DB */,
+				D40BC32629CF0DEF00B4A1E2 /* Product_DB */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		D44668F429E0731A005B2984 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D40F3EEF29E083A1007558B6 /* ProductVariant_CD */,
+				D44668F829E073BC005B2984 /* Category_CD */,
+				D44668F729E07349005B2984 /* Product_CD */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		D44668F729E07349005B2984 /* Product_CD */ = {
+			isa = PBXGroup;
+			children = (
+				D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */,
+			);
+			path = Product_CD;
+			sourceTree = "<group>";
+		};
+		D44668F829E073BC005B2984 /* Category_CD */ = {
+			isa = PBXGroup;
+			children = (
+				D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */,
+			);
+			path = Category_CD;
 			sourceTree = "<group>";
 		};
 		D4A2450F29D598230030C651 /* ProductScreen */ = {
@@ -456,13 +522,13 @@
 			);
 			name = CatalogViewer;
 			packageProductDependencies = (
-				D40BC2E529CE212700B4A1E2 /* DevTools */,
-				D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */,
-				D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */,
-				D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */,
-				D40BC2ED29CE212700B4A1E2 /* DevToolsUI */,
 				D40BC31029CEE00000B4A1E2 /* Kingfisher */,
 				D40BC33A29CF1C9C00B4A1E2 /* Swinject */,
+				D491419E29E19D1B004E6DED /* DevToolsCoreData */,
+				D49141A029E19D1B004E6DED /* DevToolsNavigation */,
+				D49141A229E19D1B004E6DED /* DevToolsNetworking */,
+				D49141A429E19D1B004E6DED /* DevToolsUI */,
+				D49141A629E19D5F004E6DED /* DevToolsRealm */,
 			);
 			productName = CatalogViewer;
 			productReference = D40BC2CD29CE1E1300B4A1E2 /* CatalogViewer.app */;
@@ -493,9 +559,9 @@
 			);
 			mainGroup = D40BC2C429CE1E1300B4A1E2;
 			packageReferences = (
-				D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */,
 				D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				D40BC33929CF1C9C00B4A1E2 /* XCRemoteSwiftPackageReference "Swinject" */,
+				D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */,
 			);
 			productRefGroup = D40BC2CE29CE1E1300B4A1E2 /* Products */;
 			projectDirPath = "";
@@ -543,20 +609,26 @@
 				D40BC31529CEF73500B4A1E2 /* CatalogProvider.swift in Sources */,
 				D40BC30A29CE3CD900B4A1E2 /* CategoryProductsScreenView.swift in Sources */,
 				D4B6927529D5FFC300956D9A /* ProductVariant.swift in Sources */,
+				D415D8AB29E0893000129E36 /* Dependencies + CoreData.swift in Sources */,
 				D40BC30829CE3CD100B4A1E2 /* CategoryProductsScreenVM.swift in Sources */,
 				D40BC33F29CF3C3D00B4A1E2 /* CatalogProviderField.swift in Sources */,
+				D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32F29CF11E600B4A1E2 /* Category_DB.swift in Sources */,
 				D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */,
 				D4A2451329D598670030C651 /* ProductScreenVM.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
+				D415D8AA29E0893000129E36 /* Dependencies + Realm.swift in Sources */,
 				D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */,
 				D4B6927F29D6218B00956D9A /* CategoryResponseMapper.swift in Sources */,
+				D49141AA29E1A555004E6DED /* Model.xcdatamodeld in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVM.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
+				D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32C29CF107200B4A1E2 /* Product + PersistableDomainModelProtocol.swift in Sources */,
 				D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */,
 				D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */,
 				D40BC31F29CEFC1300B4A1E2 /* Hosts.swift in Sources */,
+				D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC33D29CF37CD00B4A1E2 /* ProductsResponse.swift in Sources */,
 				D40BC32829CF0E2700B4A1E2 /* Product_DB.swift in Sources */,
 				D40BC2F429CE259800B4A1E2 /* Category.swift in Sources */,
@@ -778,14 +850,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/hk14004/DevTools-Swift";
-			requirement = {
-				branch = development;
-				kind = branch;
-			};
-		};
 		D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -802,34 +866,17 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hk14004/DevTools-Swift";
+			requirement = {
+				branch = development;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D40BC2E529CE212700B4A1E2 /* DevTools */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevTools;
-		};
-		D40BC2E729CE212700B4A1E2 /* DevToolsNavigation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsNavigation;
-		};
-		D40BC2E929CE212700B4A1E2 /* DevToolsNetworking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsNetworking;
-		};
-		D40BC2EB29CE212700B4A1E2 /* DevToolsRealm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsRealm;
-		};
-		D40BC2ED29CE212700B4A1E2 /* DevToolsUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D40BC2E429CE212700B4A1E2 /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
-			productName = DevToolsUI;
-		};
 		D40BC31029CEE00000B4A1E2 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D40BC30F29CEE00000B4A1E2 /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -840,7 +887,45 @@
 			package = D40BC33929CF1C9C00B4A1E2 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
 		};
+		D491419E29E19D1B004E6DED /* DevToolsCoreData */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsCoreData;
+		};
+		D49141A029E19D1B004E6DED /* DevToolsNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsNavigation;
+		};
+		D49141A229E19D1B004E6DED /* DevToolsNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsNetworking;
+		};
+		D49141A429E19D1B004E6DED /* DevToolsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsUI;
+		};
+		D49141A629E19D5F004E6DED /* DevToolsRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D491419D29E19D1B004E6DED /* XCRemoteSwiftPackageReference "DevTools-Swift" */;
+			productName = DevToolsRealm;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D49141A829E1A555004E6DED /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D49141A929E1A555004E6DED /* Model.xcdatamodel */,
+			);
+			currentVersion = D49141A929E1A555004E6DED /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D40BC2C529CE1E1300B4A1E2 /* Project object */;
 }

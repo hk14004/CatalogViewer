@@ -9,7 +9,7 @@ import DevTools
 
 extension ProductVariant_DB: PersistedModelProtocol {
         
-    enum PersistedField: String, PersistedModelFieldProtocol {
+    public enum PersistedField: String, PersistedModelFieldProtocol {
         case id
         case productId
         case name
@@ -21,11 +21,11 @@ extension ProductVariant_DB: PersistedModelProtocol {
         case inStock
     }
     
-    func toDomain(fields: Set<PersistedField>) throws -> ProductVariant {
+    public func toDomain(fields: Set<PersistedField>) throws -> ProductVariant {
         return .init(id: self.id, productId: self.productId, name: self.name, size: self.size, color: self.color, colorCode: self.colorCode, colorCode2: self.colorCode2, image: self.image, price: self.price, inStock: self.inStock)
     }
     
-    func update(with model: ProductVariant, fields: Set<PersistedField>) {
+    public func update(with model: ProductVariant, fields: Set<PersistedField>) {
         // TODO: Handle fields if needed
         self.id = model.id
         self.productId = model.productId

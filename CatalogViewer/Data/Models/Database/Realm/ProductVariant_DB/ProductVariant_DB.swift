@@ -9,9 +9,9 @@ import Foundation
 import DevToolsRealm
 import RealmSwift
 
-class ProductVariant_DB: Object {
+public class ProductVariant_DB: Object {
     
-    @Persisted(primaryKey: true) var id: String
+    @Persisted(primaryKey: true) public var id: String
     @Persisted var productId: String
     @Persisted var name: String
     @Persisted var size: String

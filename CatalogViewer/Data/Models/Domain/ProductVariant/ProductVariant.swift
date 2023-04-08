@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct ProductVariant {
-    let id: String
+public struct ProductVariant {
+    public let id: String
     let productId: String
     let name: String
     let size: String

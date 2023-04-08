@@ -9,7 +9,7 @@ import DevTools
 
 extension Product_DB: PersistedModelProtocol {
         
-    enum PersistedField: String, PersistedModelFieldProtocol {
+    public enum PersistedField: String, PersistedModelFieldProtocol {
         case mainCategoryID
         case type
         case typeName
@@ -21,11 +21,11 @@ extension Product_DB: PersistedModelProtocol {
         case currencyID
     }
     
-    func toDomain(fields: Set<PersistedField>) throws -> Product {
+    public func toDomain(fields: Set<PersistedField>) throws -> Product {
         return .init(id: self.id, mainCategoryID: self.mainCategoryID, type: self.type, typeName: self.typeName, title: self.title, brand: self.brand, model: self.model, image: self.image, variantCount: self.variantCount, currencyID: self.currencyID)
     }
     
-    func update(with model: Product, fields: Set<PersistedField>) {
+    public func update(with model: Product, fields: Set<PersistedField>) {
         // TODO: Handle fields if needed
         self.id = model.id
         self.mainCategoryID = model.mainCategoryID
