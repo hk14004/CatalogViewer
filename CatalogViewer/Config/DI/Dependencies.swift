@@ -9,7 +9,7 @@ import Foundation
 import Swinject
 import Moya
 import DevToolsNetworking
-import DevTools
+import DevToolsCore
 
 let DI: Container = {
     let container = Container()

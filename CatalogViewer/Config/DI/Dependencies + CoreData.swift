@@ -7,7 +7,7 @@
 
 import Swinject
 import CoreData
-import DevTools
+import DevToolsCore
 import DevToolsCoreData
 
 

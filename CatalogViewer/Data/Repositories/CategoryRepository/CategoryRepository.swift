@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import DevTools
+import DevToolsCore
 
 protocol CategoryRepositoryProtocol {
     
@@ -40,7 +40,7 @@ class CategoryRepository<CategoryStore: PersistedLayerInterface> where CategoryS
 }
 
 extension CategoryRepository: CategoryRepositoryProtocol {
-    func getCategoryPage(pageOptions: DevTools.PagedRequestOptions) async -> DevTools.PagedResult<Category> {
+    func getCategoryPage(pageOptions: PagedRequestOptions) async -> PagedResult<Category> {
         let key = Category_CD.PersistedField.title.rawValue
         return await categoryStore.getListPage(pageOptions: pageOptions,
                                                predicate: NSPredicate(value: true),

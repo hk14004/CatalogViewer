@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import DevTools
+import DevToolsCore
 
 protocol ProductRepositoryProtocol {
     

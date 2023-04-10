@@ -9,7 +9,7 @@ import Swinject
 import CoreData
 //import RealmSwift
 //import DevToolsRealm
-import DevTools
+import DevToolsCore
 
 //let DI_REALM: (Container)->() = { container in
 //    

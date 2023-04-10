@@ -6,7 +6,7 @@
 //
 
 
-import DevTools
+import DevToolsCore
 
 extension Category_DB: PersistedModelProtocol {
         

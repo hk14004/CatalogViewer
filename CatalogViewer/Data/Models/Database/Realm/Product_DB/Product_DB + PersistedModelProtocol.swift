@@ -5,7 +5,7 @@
 //  Created by Hardijs Ķirsis on 25/03/2023.
 //
 
-import DevTools
+import DevToolsCore
 
 extension Product_DB: PersistedModelProtocol {
         
