@@ -8,9 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-struct CategoriesScreenView: View {
+struct CategoriesScreenView<ViewModel: CategoriesScreenVM>: View {
     
-    @ObservedObject var viewModel: CategoriesScreenVM
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         makeCategoriesListView()

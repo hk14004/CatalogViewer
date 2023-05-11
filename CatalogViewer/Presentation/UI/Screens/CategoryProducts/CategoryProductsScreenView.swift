@@ -8,14 +8,13 @@
 import SwiftUI
 import Kingfisher
 
-struct CategoryProductsScreenView: View {
+struct CategoryProductsScreenView<ViewModel: CategoryProductsScreenVM>: View {
     
-    @ObservedObject var viewModel: CategoryProductsScreenVM
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         List(viewModel.sections, id: \.identifier) { section in
-            let sectionID = CategoryProductsScreenVM.Section.Identifier.init(rawValue: section.identifier.rawValue)!
-            switch sectionID {
+            switch section.identifier {
             case .productsGrid:
                 makeProductsGridSection(section: section)
             }
@@ -26,7 +25,7 @@ struct CategoryProductsScreenView: View {
 
 extension CategoryProductsScreenView {
     @ViewBuilder
-    private func makeProductsGridSection(section: CategoryProductsScreenVM.Section) -> some View {
+    private func makeProductsGridSection(section: CategoryProductsScreenSection) -> some View {
         let columns: [GridItem] = {
             if section.cells.count > 1 {
                 return [

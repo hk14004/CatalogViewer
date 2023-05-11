@@ -22,3 +22,14 @@ public struct Product {
 
 extension Product: Equatable {}
 extension Product: Hashable {}
+
+extension Product {
+    class Preview {
+        static func makePreview() -> Product {
+            .init(id: UUID().uuidString, mainCategoryID: "preview", type: "Preview type", typeName: "preview type name",
+                  title: "preview title", brand: "preview brand", model: "preview model",
+                  image: "https://www.printful.com/static/images/layout/printful-logo.png",
+                  variantCount: 1, currencyID: "123")
+        }
+    }
+}

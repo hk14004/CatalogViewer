@@ -15,7 +15,7 @@ class CategoriesCoordinator: NavigationCoordinator {
     var children: [NavigationCoordinator] = []
     
     func start() {
-        let vm = CategoriesScreenVM(categoryRepository: DI.container.resolve(CategoryRepository.self)!)
+        let vm = CategoriesScreenVMImpl(categoryRepository: DI.container.resolve(CategoryRepository.self)!)
         vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoriesScreenView(viewModel: vm))
         router.push(vc, isAnimated: true, onNavigateBack: onFree)
@@ -29,7 +29,7 @@ class CategoriesCoordinator: NavigationCoordinator {
 // MARK: CategoriesScreenVMNavigationDelegate
 
 extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
-    func categoriesScreenVM(vm: CategoriesScreenVM, didSelectCategory category: Category) {
+    func categoriesScreenVM(vm: CategoriesScreenVMImpl, didSelectCategory category: Category) {
         goToCategory(item: category)
     }
 }
@@ -37,7 +37,7 @@ extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
 // MARK: CategoriesScreenVMNavigationDelegate
 
 extension CategoriesCoordinator: CategoryProductsScreenVMNavigationDelegate {
-    func categoryProductsScreenVM(vm: CategoryProductsScreenVM, showProductDetails product: Product) {
+    func categoryProductsScreenVM(vm: CategoryProductsScreenVMImpl, showProductDetails product: Product) {
         goToProductDetails(item: product)
     }
 }
@@ -46,7 +46,7 @@ extension CategoriesCoordinator: CategoryProductsScreenVMNavigationDelegate {
 
 extension CategoriesCoordinator {
     private func goToCategory(item: Category) {
-        let vm = CategoryProductsScreenVM(category: item,
+        let vm = CategoryProductsScreenVMImpl(category: item,
                                           productsRepository: DI.container.resolve(ProductRepository.self)!)
         vm.navigationDelegate = self
         let vc = UIHostingController(rootView: CategoryProductsScreenView(viewModel: vm))
@@ -55,7 +55,7 @@ extension CategoriesCoordinator {
     }
     
     private func goToProductDetails(item: Product) {
-        let vm = ProductScreenVM(product: item,
+        let vm = ProductScreenVMImpl(product: item,
                                  productsRepository: DI.container.resolve(ProductRepository.self)!)
         let vc = UIHostingController(rootView: ProductScreenView(viewModel: vm))
         router.navigationController.pushViewController(vc, animated: true)

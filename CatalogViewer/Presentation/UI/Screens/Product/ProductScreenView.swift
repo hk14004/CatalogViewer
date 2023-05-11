@@ -8,9 +8,9 @@
 import SwiftUI
 import Kingfisher
 
-struct ProductScreenView: View {
+struct ProductScreenView<ViewModel: ProductScreenVM>: View {
     
-    @ObservedObject var viewModel: ProductScreenVM
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         ScrollView {

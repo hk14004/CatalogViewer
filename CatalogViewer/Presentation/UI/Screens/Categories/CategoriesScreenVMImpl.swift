@@ -9,37 +9,9 @@ import SwiftUI
 import Combine
 import DevToolsUI
 
-protocol CategoriesScreenVMNavigationDelegate: AnyObject {
-    func categoriesScreenVM(vm: CategoriesScreenVM, didSelectCategory category: Category)
-}
-
-class CategoriesScreenVM: ObservableObject {
+class CategoriesScreenVMImpl: CategoriesScreenVM {
     
     // MARK: Types
-    
-    struct Section: UISectionModelProtocol {
-
-        enum Identifier: String, CaseIterable {
-            case categoriesList
-        }
-        
-        enum Cell: Hashable {
-            // TODO: Add cells as ViewModels
-            case categoryItem(Category)
-            case redactedRow(uuid: String)
-            case nothingToShow
-        }
-        
-        let identifier: Identifier
-        var title: String
-        var cells: [Cell]
-        
-        init(identifier: Identifier, title: String, cells: [Cell]) {
-            self.identifier = identifier
-            self.title = title
-            self.cells = cells
-        }
-    }
     
     class Bag {
         var categoriesHandle: AnyCancellable?
@@ -49,14 +21,14 @@ class CategoriesScreenVM: ObservableObject {
     
     // Public
     weak var navigationDelegate: CategoriesScreenVMNavigationDelegate?
-    @Published var sections: [Section] = []
+    @Published var sections: [CategoriesScreenSection] = []
     
     // Private
     private let bag = Bag()
     private var loadedCategories: [Category]?
     private let categoryRepository: CategoryRepository
     private var categoriesRefreshed: Bool = false
-    private lazy var redactedCategories: [Section.Cell] = makeRedactedCells(count: 12)
+    private lazy var redactedCategories: [CategoriesScreenSection.Cell] = makeRedactedCells(count: 12)
     
     // MARK: Init
     
@@ -69,7 +41,7 @@ class CategoriesScreenVM: ObservableObject {
 
 // MARK: Public
 
-extension CategoriesScreenVM {
+extension CategoriesScreenVMImpl {
     func onCategoryTapped(item: Category) {
         navigationDelegate?.categoriesScreenVM(vm: self, didSelectCategory: item)
     }
@@ -77,7 +49,7 @@ extension CategoriesScreenVM {
 
 // MARK: Private
 
-extension CategoriesScreenVM {
+extension CategoriesScreenVMImpl {
     private func startup() {
         Task {
             // Create redacted sections
@@ -89,7 +61,7 @@ extension CategoriesScreenVM {
             // Load DB cache and display again, this time we know if there is no data
             await updateCategoriesSection()
             // Observe and react to DB changes
-//            observeCachedData()
+            //            observeCachedData()
         }
     }
     
@@ -133,14 +105,14 @@ extension CategoriesScreenVM {
         }
     }
     
-    private func makeSections() -> [Section] {
+    private func makeSections() -> [CategoriesScreenSection] {
         [
             makeCategoriesListSection(items: loadedCategories)
         ]
     }
     
-    private func makeCategoriesListSection(items: [Category]?) -> Section {
-        let cells: [Section.Cell] = {
+    private func makeCategoriesListSection(items: [Category]?) -> CategoriesScreenSection {
+        let cells: [CategoriesScreenSection.Cell] = {
             guard let loadedCategories = items else {
                 return redactedCategories
             }
@@ -151,18 +123,18 @@ extension CategoriesScreenVM {
                     return redactedCategories
                 }
             } else {
-                let loadedCells = loadedCategories.map({Section.Cell.categoryItem($0)})
+                let loadedCells = loadedCategories.map({CategoriesScreenSection.Cell.categoryItem($0)})
                 return loadedCells
             }
             
         }()
-        let section = Section(identifier: Section.Identifier.categoriesList,
-                              title: "Categories", cells: cells)
+        let section = CategoriesScreenSection(identifier: CategoriesScreenSection.Identifier.categoriesList,
+                                              title: "Categories", cells: cells)
         return section
     }
     
-    private func makeRedactedCells(count: Int) -> [Section.Cell]{
-        var cells: [Section.Cell] = []
+    private func makeRedactedCells(count: Int) -> [CategoriesScreenSection.Cell]{
+        var cells: [CategoriesScreenSection.Cell] = []
         for _ in 0...count - 1 {
             cells.append(.redactedRow(uuid: UUID().uuidString))
         }

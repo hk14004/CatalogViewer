@@ -9,36 +9,9 @@ import SwiftUI
 import Combine
 import DevToolsUI
 
-protocol CategoryProductsScreenVMNavigationDelegate: AnyObject {
-    func categoryProductsScreenVM(vm: CategoryProductsScreenVM, showProductDetails product: Product)
-}
-
-class CategoryProductsScreenVM: ObservableObject {
+class CategoryProductsScreenVMImpl: CategoryProductsScreenVM {
     
     // MARK: Types
-    
-    struct Section: UISectionModelProtocol {
-
-        enum Identifier: String, CaseIterable {
-            case productsGrid
-        }
-        
-        enum Cell: Hashable {
-            case productGridItem(Product)
-            case redactedItem(uuid: String)
-            case nothingToShow
-        }
-        
-        let identifier: Identifier
-        var title: String
-        var cells: [Cell]
-        
-        init(identifier: Identifier, title: String, cells: [Cell]) {
-            self.identifier = identifier
-            self.title = title
-            self.cells = cells
-        }
-    }
     
     class Bag {
         var productsHandle: AnyCancellable?
@@ -48,7 +21,7 @@ class CategoryProductsScreenVM: ObservableObject {
     
     // Public
     weak var navigationDelegate: CategoryProductsScreenVMNavigationDelegate?
-    @Published var sections: [Section] = []
+    @Published var sections: [CategoryProductsScreenSection] = []
     
     // Private
     private let bag = Bag()
@@ -56,7 +29,9 @@ class CategoryProductsScreenVM: ObservableObject {
     private let category: Category
     private let productsRepository: ProductRepository
     private var productsRefreshed: Bool = false
-    private lazy var redactedProducts: [Section.Cell] = makeRedactedCells(count: 12)
+    private lazy var redactedProducts: [CategoryProductsScreenSection.Cell] = makeRedactedCells(count: 12)
+    
+    // MARK: Init
     
     init(category: Category, productsRepository: ProductRepository) {
         self.category = category
@@ -65,9 +40,9 @@ class CategoryProductsScreenVM: ObservableObject {
     }
 }
 
-// MARK: Private
+// MARK: Public
 
-extension CategoryProductsScreenVM {
+extension CategoryProductsScreenVMImpl {
     func onTap(product: Product) {
         navigationDelegate?.categoryProductsScreenVM(vm: self, showProductDetails: product)
     }
@@ -75,7 +50,7 @@ extension CategoryProductsScreenVM {
 
 // MARK: Private
 
-extension CategoryProductsScreenVM {
+extension CategoryProductsScreenVMImpl {
     private func startup() {
         Task {
             // Create redacted sections
@@ -134,14 +109,14 @@ extension CategoryProductsScreenVM {
         }
     }
     
-    private func makeSections() -> [Section] {
+    private func makeSections() -> [CategoryProductsScreenSection] {
         [
             makeProductListSection(items: loadedProducts)
         ]
     }
     
-    private func makeProductListSection(items: [Product]?) -> Section {
-        let cells: [Section.Cell] = {
+    private func makeProductListSection(items: [Product]?) -> CategoryProductsScreenSection {
+        let cells: [CategoryProductsScreenSection.Cell] = {
             guard let loadedCategories = items else {
                 return redactedProducts
             }
@@ -152,18 +127,18 @@ extension CategoryProductsScreenVM {
                     return redactedProducts
                 }
             } else {
-                let loadedCells = loadedCategories.map({Section.Cell.productGridItem($0)})
+                let loadedCells = loadedCategories.map({CategoryProductsScreenSection.Cell.productGridItem($0)})
                 return loadedCells
             }
             
         }()
-        let section = Section(identifier: Section.Identifier.productsGrid,
+        let section = CategoryProductsScreenSection(identifier: CategoryProductsScreenSection.Identifier.productsGrid,
                               title: "Featured", cells: cells)
         return section
     }
     
-    private func makeRedactedCells(count: Int) -> [Section.Cell]{
-        var cells: [Section.Cell] = []
+    private func makeRedactedCells(count: Int) -> [CategoryProductsScreenSection.Cell]{
+        var cells: [CategoryProductsScreenSection.Cell] = []
         for _ in 0...count - 1 {
             cells.append(.redactedItem(uuid: UUID().uuidString))
         }

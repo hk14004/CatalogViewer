@@ -9,9 +9,9 @@ import SwiftUI
 import Combine
 import DevToolsUI
 
-class ProductScreenVM: ObservableObject {
+class ProductScreenVMImpl: ProductScreenVM {
     
-    // Types
+    // MARK: Types
     
     class Bag {
         var productHandle: AnyCancellable?
@@ -24,7 +24,7 @@ class ProductScreenVM: ObservableObject {
     // Private
     private let bag = Bag()
     private let productsRepository: ProductRepository
-    @Published var product: Product
+    @Published var product: Product // TODO: Add presentable protocol if needed
     
     // MARK: Init
     
@@ -38,7 +38,7 @@ class ProductScreenVM: ObservableObject {
 
 // MARK: Private
 
-extension ProductScreenVM {
+extension ProductScreenVMImpl {
     private func startup() {
         // TODO: Observe product details, variants. Fetch more details etc
         observeProduct()
