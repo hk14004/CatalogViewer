@@ -51,12 +51,6 @@
 		D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927929D6031C00956D9A /* ProductVariant_DB.swift */; };
 		D4B6927C29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927B29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift */; };
 		D4B6927F29D6218B00956D9A /* CategoryResponseMapperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B6927E29D6218B00956D9A /* CategoryResponseMapperImpl.swift */; };
-		D4C5C25E2A0D6FE4003862D8 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C25D2A0D6FE4003862D8 /* DependencyProvider.swift */; };
-		D4C5C2612A0D7025003862D8 /* PersistentCoreDataStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2602A0D7025003862D8 /* PersistentCoreDataStoreAssembly.swift */; };
-		D4C5C2632A0D71C8003862D8 /* PersistentRealmStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2622A0D71C8003862D8 /* PersistentRealmStoreAssembly.swift */; };
-		D4C5C2652A0D7AEC003862D8 /* DataProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2642A0D7AEC003862D8 /* DataProviderAssembly.swift */; };
-		D4C5C2672A0D7B46003862D8 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2662A0D7B46003862D8 /* RepositoryAssembly.swift */; };
-		D4C5C2692A0D7B88003862D8 /* DataMapperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2682A0D7B88003862D8 /* DataMapperAssembly.swift */; };
 		D4C5C2742A0D8668003862D8 /* CatalogProviderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2732A0D8668003862D8 /* CatalogProviderImpl.swift */; };
 		D4C5C2792A0D9141003862D8 /* CategoryRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2782A0D9141003862D8 /* CategoryRepositoryImpl.swift */; };
 		D4C5C27D2A0D9265003862D8 /* ProductRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C27C2A0D9265003862D8 /* ProductRepositoryImpl.swift */; };
@@ -108,12 +102,6 @@
 		D4B6927929D6031C00956D9A /* ProductVariant_DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductVariant_DB.swift; sourceTree = "<group>"; };
 		D4B6927B29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_DB + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D4B6927E29D6218B00956D9A /* CategoryResponseMapperImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryResponseMapperImpl.swift; sourceTree = "<group>"; };
-		D4C5C25D2A0D6FE4003862D8 /* DependencyProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
-		D4C5C2602A0D7025003862D8 /* PersistentCoreDataStoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentCoreDataStoreAssembly.swift; sourceTree = "<group>"; };
-		D4C5C2622A0D71C8003862D8 /* PersistentRealmStoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentRealmStoreAssembly.swift; sourceTree = "<group>"; };
-		D4C5C2642A0D7AEC003862D8 /* DataProviderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderAssembly.swift; sourceTree = "<group>"; };
-		D4C5C2662A0D7B46003862D8 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
-		D4C5C2682A0D7B88003862D8 /* DataMapperAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMapperAssembly.swift; sourceTree = "<group>"; };
 		D4C5C2732A0D8668003862D8 /* CatalogProviderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProviderImpl.swift; sourceTree = "<group>"; };
 		D4C5C2782A0D9141003862D8 /* CategoryRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepositoryImpl.swift; sourceTree = "<group>"; };
 		D4C5C27C2A0D9265003862D8 /* ProductRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -308,7 +296,6 @@
 		D40BC31B29CEFBC800B4A1E2 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				D415D8A329E088D800129E36 /* Dependencies */,
 				D40BC34929D2050000B4A1E2 /* Constants */,
 			);
 			path = Config;
@@ -387,15 +374,6 @@
 				D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */,
 			);
 			path = ProductVariant_CD;
-			sourceTree = "<group>";
-		};
-		D415D8A329E088D800129E36 /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				D4C5C25D2A0D6FE4003862D8 /* DependencyProvider.swift */,
-				D4C5C25F2A0D7004003862D8 /* Assemblies */,
-			);
-			path = Dependencies;
 			sourceTree = "<group>";
 		};
 		D44668F029E071BC005B2984 /* Frameworks */ = {
@@ -493,18 +471,6 @@
 				D40BC31E29CEFC1300B4A1E2 /* Hosts.swift */,
 			);
 			path = Hosts;
-			sourceTree = "<group>";
-		};
-		D4C5C25F2A0D7004003862D8 /* Assemblies */ = {
-			isa = PBXGroup;
-			children = (
-				D4C5C2602A0D7025003862D8 /* PersistentCoreDataStoreAssembly.swift */,
-				D4C5C2622A0D71C8003862D8 /* PersistentRealmStoreAssembly.swift */,
-				D4C5C2642A0D7AEC003862D8 /* DataProviderAssembly.swift */,
-				D4C5C2662A0D7B46003862D8 /* RepositoryAssembly.swift */,
-				D4C5C2682A0D7B88003862D8 /* DataMapperAssembly.swift */,
-			);
-			path = Assemblies;
 			sourceTree = "<group>";
 		};
 		D4C5C26A2A0D82AC003862D8 /* Domain */ = {
@@ -711,18 +677,14 @@
 				D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */,
 				D4C5C27F2A0D95DF003862D8 /* CategoriesScreenCommon.swift in Sources */,
 				D40BC33529CF15EF00B4A1E2 /* ProductRepository.swift in Sources */,
-				D4C5C2692A0D7B88003862D8 /* DataMapperAssembly.swift in Sources */,
 				D40BC34429CF558400B4A1E2 /* ProductResponseMapperImpl.swift in Sources */,
-				D4C5C2652A0D7AEC003862D8 /* DataProviderAssembly.swift in Sources */,
 				D40BC31529CEF73500B4A1E2 /* CatalogProvider.swift in Sources */,
 				D40BC30A29CE3CD900B4A1E2 /* CategoryProductsScreenView.swift in Sources */,
-				D4C5C2612A0D7025003862D8 /* PersistentCoreDataStoreAssembly.swift in Sources */,
 				D4B6927529D5FFC300956D9A /* ProductVariant.swift in Sources */,
 				D40BC30829CE3CD100B4A1E2 /* CategoryProductsScreenVMImpl.swift in Sources */,
 				D4C5C2742A0D8668003862D8 /* CatalogProviderImpl.swift in Sources */,
 				D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32F29CF11E600B4A1E2 /* Category_DB.swift in Sources */,
-				D4C5C2672A0D7B46003862D8 /* RepositoryAssembly.swift in Sources */,
 				D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */,
 				D4A2451329D598670030C651 /* ProductScreenVMImpl.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
@@ -731,12 +693,10 @@
 				D49141AA29E1A555004E6DED /* Model.xcdatamodeld in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVMImpl.swift in Sources */,
 				D4C5C2872A0D9F26003862D8 /* CategoryProductsScreenPreview.swift in Sources */,
-				D4C5C2632A0D71C8003862D8 /* PersistentRealmStoreAssembly.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
 				D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */,
 				D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */,
 				D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */,
-				D4C5C25E2A0D6FE4003862D8 /* DependencyProvider.swift in Sources */,
 				D4C5C28B2A0DA1BB003862D8 /* ProductScreenPreview.swift in Sources */,
 				D40BC31F29CEFC1300B4A1E2 /* Hosts.swift in Sources */,
 				D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */,
