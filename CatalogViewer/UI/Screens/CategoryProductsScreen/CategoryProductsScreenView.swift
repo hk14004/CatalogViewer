@@ -13,8 +13,8 @@ struct CategoryProductsScreenView: View {
     @ObservedObject var viewModel: CategoryProductsScreenVM
     
     var body: some View {
-        List(viewModel.sections, id: \.uuid) { section in
-            let sectionID = CategoryProductsScreenVM.SectionIdentifiers.init(rawValue: section.uuid)!
+        List(viewModel.sections, id: \.identifier) { section in
+            let sectionID = CategoryProductsScreenVM.Section.Identifier.init(rawValue: section.identifier.rawValue)!
             switch sectionID {
             case .productsGrid:
                 makeProductsGridSection(section: section)

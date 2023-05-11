@@ -17,24 +17,25 @@ class CategoriesScreenVM: ObservableObject {
     
     // MARK: Types
     
-    enum SectionIdentifiers: String {
-        case categoriesList
-    }
-    
-    enum Cell: Hashable {
-        case categoryItem(Category)
-        case redactedRow(uuid: String)
-        case nothingToShow
-    }
-    
     struct Section: UISectionModelProtocol {
+
+        enum Identifier: String, CaseIterable {
+            case categoriesList
+        }
         
-        let uuid: String
+        enum Cell: Hashable {
+            // TODO: Add cells as ViewModels
+            case categoryItem(Category)
+            case redactedRow(uuid: String)
+            case nothingToShow
+        }
+        
+        let identifier: Identifier
         var title: String
         var cells: [Cell]
         
-        init(uuid: String, title: String, cells: [Cell]) {
-            self.uuid = uuid
+        init(identifier: Identifier, title: String, cells: [Cell]) {
+            self.identifier = identifier
             self.title = title
             self.cells = cells
         }
@@ -55,7 +56,7 @@ class CategoriesScreenVM: ObservableObject {
     private var loadedCategories: [Category]?
     private let categoryRepository: CategoryRepositoryProtocol
     private var categoriesRefreshed: Bool = false
-    private lazy var redactedCategories: [Cell] = makeRedactedCells(count: 12)
+    private lazy var redactedCategories: [Section.Cell] = makeRedactedCells(count: 12)
     
     // MARK: Init
     
@@ -139,7 +140,7 @@ extension CategoriesScreenVM {
     }
     
     private func makeCategoriesListSection(items: [Category]?) -> Section {
-        let cells: [Cell] = {
+        let cells: [Section.Cell] = {
             guard let loadedCategories = items else {
                 return redactedCategories
             }
@@ -150,18 +151,18 @@ extension CategoriesScreenVM {
                     return redactedCategories
                 }
             } else {
-                let loadedCells = loadedCategories.map({Cell.categoryItem($0)})
+                let loadedCells = loadedCategories.map({Section.Cell.categoryItem($0)})
                 return loadedCells
             }
             
         }()
-        let section = Section(uuid: SectionIdentifiers.categoriesList.rawValue,
+        let section = Section(identifier: Section.Identifier.categoriesList,
                               title: "Categories", cells: cells)
         return section
     }
     
-    private func makeRedactedCells(count: Int) -> [Cell]{
-        var cells: [Cell] = []
+    private func makeRedactedCells(count: Int) -> [Section.Cell]{
+        var cells: [Section.Cell] = []
         for _ in 0...count - 1 {
             cells.append(.redactedRow(uuid: UUID().uuidString))
         }

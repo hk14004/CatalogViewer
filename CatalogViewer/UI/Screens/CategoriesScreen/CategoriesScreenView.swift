@@ -22,7 +22,7 @@ struct CategoriesScreenView: View {
 extension CategoriesScreenView {
     @ViewBuilder
     private func makeCategoriesListView() -> some View {
-        List(viewModel.sections, id: \.uuid) { section in
+        List(viewModel.sections, id: \.identifier) { section in
             Section {
                 ForEach(section.cells, id: \.self) { cell in
                     switch cell {

@@ -21,17 +21,19 @@ protocol CategoryRepositoryProtocol {
 
 }
 
-class CategoryRepository<CategoryStore: PersistedLayerInterface> where CategoryStore.T == Category {
+class CategoryRepository {
     
     // MARK: Properties
     
     private let remoteProvider: CatalogProviderProtocol
-    private let categoryStore: CategoryStore
+    private let categoryStore: BasePersistedLayerInterface<Category>
     private let mapper: CategoryResponseMapperProtocol
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, categoriesStore: CategoryStore, mapper: CategoryResponseMapperProtocol) {
+    init(remoteProvider: CatalogProviderProtocol,
+         categoriesStore: BasePersistedLayerInterface<Category>,
+         mapper: CategoryResponseMapperProtocol) {
         self.remoteProvider = remoteProvider
         self.categoryStore = categoriesStore
         self.mapper = mapper

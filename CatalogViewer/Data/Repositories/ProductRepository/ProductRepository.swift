@@ -24,18 +24,21 @@ protocol ProductRepositoryProtocol {
     func addOrUpdate(product: Product) async
 }
 
-class ProductRepository<ProductStore: PersistedLayerInterface, VariantStore: PersistedLayerInterface> where ProductStore.T == Product, VariantStore.T == ProductVariant {
+class ProductRepository {
     
     // MARK: Properties
     
     private let remoteProvider: CatalogProviderProtocol
-    private let productsStore: ProductStore
+    private let productsStore: BasePersistedLayerInterface<Product>
     private let mapper: ProductResponseMapperProtocol
-    private let productVariantStore: VariantStore
+    private let productVariantStore: BasePersistedLayerInterface<ProductVariant>
     
     // MARK: Init
     
-    init(remoteProvider: CatalogProviderProtocol, productsStore: ProductStore, mapper: ProductResponseMapperProtocol, productVariantStore: VariantStore) {
+    init(remoteProvider: CatalogProviderProtocol,
+         productsStore: BasePersistedLayerInterface<Product>,
+         mapper: ProductResponseMapperProtocol,
+         productVariantStore: BasePersistedLayerInterface<ProductVariant>) {
         self.remoteProvider = remoteProvider
         self.productsStore = productsStore
         self.mapper = mapper

@@ -17,24 +17,24 @@ class CategoryProductsScreenVM: ObservableObject {
     
     // MARK: Types
     
-    enum SectionIdentifiers: String {
-        case productsGrid
-    }
-    
-    enum Cell: Hashable {
-        case productGridItem(Product)
-        case redactedItem(uuid: String)
-        case nothingToShow
-    }
-    
     struct Section: UISectionModelProtocol {
+
+        enum Identifier: String, CaseIterable {
+            case productsGrid
+        }
         
-        let uuid: String
+        enum Cell: Hashable {
+            case productGridItem(Product)
+            case redactedItem(uuid: String)
+            case nothingToShow
+        }
+        
+        let identifier: Identifier
         var title: String
         var cells: [Cell]
         
-        init(uuid: String, title: String, cells: [Cell]) {
-            self.uuid = uuid
+        init(identifier: Identifier, title: String, cells: [Cell]) {
+            self.identifier = identifier
             self.title = title
             self.cells = cells
         }
@@ -56,7 +56,7 @@ class CategoryProductsScreenVM: ObservableObject {
     private let category: Category
     private let productsRepository: ProductRepositoryProtocol
     private var productsRefreshed: Bool = false
-    private lazy var redactedProducts: [Cell] = makeRedactedCells(count: 12)
+    private lazy var redactedProducts: [Section.Cell] = makeRedactedCells(count: 12)
     
     init(category: Category, productsRepository: ProductRepositoryProtocol) {
         self.category = category
@@ -141,7 +141,7 @@ extension CategoryProductsScreenVM {
     }
     
     private func makeProductListSection(items: [Product]?) -> Section {
-        let cells: [Cell] = {
+        let cells: [Section.Cell] = {
             guard let loadedCategories = items else {
                 return redactedProducts
             }
@@ -152,18 +152,18 @@ extension CategoryProductsScreenVM {
                     return redactedProducts
                 }
             } else {
-                let loadedCells = loadedCategories.map({Cell.productGridItem($0)})
+                let loadedCells = loadedCategories.map({Section.Cell.productGridItem($0)})
                 return loadedCells
             }
             
         }()
-        let section = Section(uuid: SectionIdentifiers.productsGrid.rawValue,
+        let section = Section(identifier: Section.Identifier.productsGrid,
                               title: "Featured", cells: cells)
         return section
     }
     
-    private func makeRedactedCells(count: Int) -> [Cell]{
-        var cells: [Cell] = []
+    private func makeRedactedCells(count: Int) -> [Section.Cell]{
+        var cells: [Section.Cell] = []
         for _ in 0...count - 1 {
             cells.append(.redactedItem(uuid: UUID().uuidString))
         }
