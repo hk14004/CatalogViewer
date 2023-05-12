@@ -9,7 +9,7 @@ import Foundation
 import DevToolsUI
 
 protocol CategoriesScreenVMNavigationDelegate: AnyObject {
-    func categoriesScreenVM(vm: CategoriesScreenVMImpl, didSelectCategory category: Category)
+    func categoriesScreenVM(vm: any CategoriesScreenVM, didSelectCategory category: Category)
 }
 
 protocol CategoriesScreenVM: ObservableObject {

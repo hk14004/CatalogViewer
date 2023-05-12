@@ -9,7 +9,7 @@ import Foundation
 import DevToolsUI
 
 protocol CategoryProductsScreenVMNavigationDelegate: AnyObject {
-    func categoryProductsScreenVM(vm: CategoryProductsScreenVMImpl, showProductDetails product: Product)
+    func categoryProductsScreenVM(vm: any CategoryProductsScreenVM, showProductDetails product: Product)
 }
 
 protocol CategoryProductsScreenVM: ObservableObject {
@@ -25,6 +25,7 @@ class CategoryProductsScreenSection: UISectionModelProtocol {
     }
     
     enum Cell: Hashable {
+        // TODO: Add cells as viewmodels
         case productGridItem(Product)
         case redactedItem(uuid: String)
         case nothingToShow

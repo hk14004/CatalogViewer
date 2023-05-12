@@ -29,7 +29,7 @@ class CategoriesCoordinator: NavigationCoordinator {
 // MARK: CategoriesScreenVMNavigationDelegate
 
 extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
-    func categoriesScreenVM(vm: CategoriesScreenVMImpl, didSelectCategory category: Category) {
+    func categoriesScreenVM(vm: any CategoriesScreenVM, didSelectCategory category: Category) {
         goToCategory(item: category)
     }
 }
@@ -37,7 +37,7 @@ extension CategoriesCoordinator: CategoriesScreenVMNavigationDelegate {
 // MARK: CategoriesScreenVMNavigationDelegate
 
 extension CategoriesCoordinator: CategoryProductsScreenVMNavigationDelegate {
-    func categoryProductsScreenVM(vm: CategoryProductsScreenVMImpl, showProductDetails product: Product) {
+    func categoryProductsScreenVM(vm: any CategoryProductsScreenVM, showProductDetails product: Product) {
         goToProductDetails(item: product)
     }
 }

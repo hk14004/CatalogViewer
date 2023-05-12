@@ -82,9 +82,9 @@ extension CategoriesScreenVMImpl {
     private func observeCachedData() {
         bag.categoriesHandle = categoryRepository.observeCategories()
             .dropFirst()
-            .removeDuplicates().sink { [unowned self] _categories in
-                loadedCategories = _categories
-                onRenderCategories(list: _categories)
+            .removeDuplicates().sink { [weak self] _categories in
+                self?.loadedCategories = _categories
+                self?.onRenderCategories(list: _categories)
             }
     }
     

@@ -46,7 +46,11 @@ extension CategoriesScreenView {
     @ViewBuilder
     private func makeCategoryListItemView(item: Category) -> some View {
         HStack {
-            Text(item.title)
+            VStack(alignment: .leading) {
+                Text("id \(item.id)")
+                Text(item.title)
+                Text("size \(item.size)")
+            }
             Spacer()
             Image(systemName: "chevron.right")
         }
