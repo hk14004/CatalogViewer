@@ -32,14 +32,14 @@ class CategoryRepositoryImpl {
 extension CategoryRepositoryImpl: CategoryRepository {
     func getCategoryPage(pageOptions: PagedRequestOptions) async -> PagedResult<Category> {
         let key = Category_CD.PersistedField.title.rawValue
+        let sort: [NSSortDescriptor] = [.init(key: key, ascending: true)]
         return await categoryStore.getListPage(pageOptions: pageOptions,
                                                predicate: NSPredicate(value: true),
-                                               sortedByKeyPath: key, ascending: true)
+                                               sortDescriptors: sort)
     }
     
     func getCategories() async -> [Category] {
-        let key = Category_CD.PersistedField.id.rawValue
-        return await categoryStore.getList(predicate: NSPredicate(value: true), sortedByKeyPath: key, ascending: true)
+        return await categoryStore.getList(predicate: NSPredicate(value: true))
     }
     
     func refreshCategories() async {
@@ -59,8 +59,7 @@ extension CategoryRepositoryImpl: CategoryRepository {
     }
     
     func observeCategories() -> AnyPublisher<[Category], Never> {
-        let key = Category_CD.PersistedField.id.rawValue
-        return categoryStore.observeList(predicate: NSPredicate(value: true), sortedByKeyPath: key, ascending: true)
+        return categoryStore.observeList(predicate: NSPredicate(value: true))
     }
     
 }

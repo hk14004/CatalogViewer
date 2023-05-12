@@ -66,9 +66,9 @@ extension ProductRepositoryImpl: ProductRepository {
     
     func getProducts(categoryIds: [String]) async -> [Product] {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
-        return await productsStore.getList(predicate: predcate,
-                                   sortedByKeyPath: Product_CD.PersistedField.title.rawValue,
-                                   ascending: true)
+        let sort: [NSSortDescriptor] = [.init(key: Product_CD.PersistedField.title.rawValue,
+                                              ascending: true)]
+        return await productsStore.getList(predicate: predcate, sortDescriptors: sort)
     }
     
     func refreshProducts(categoryIds: [String]) async {
@@ -90,9 +90,9 @@ extension ProductRepositoryImpl: ProductRepository {
     
     func observeProducts(categoryIds: [String]) -> AnyPublisher<[Product], Never> {
         let predcate = makeSearchPredicateForCategories(categoryIds: categoryIds) ?? NSPredicate(value: true)
-        return productsStore.observeList(predicate: predcate,
-                                 sortedByKeyPath: Product_CD.PersistedField.title.rawValue,
-                                 ascending: true)
+        let sort: [NSSortDescriptor] = [.init(key: Product_CD.PersistedField.title.rawValue,
+                                              ascending: true)]
+        return productsStore.observeList(predicate: predcate, sortDescriptors: sort)
     }
     
 }
@@ -105,7 +105,7 @@ extension ProductRepositoryImpl {
         // 1. Fetch old variants and delete them
         // 2. Add new variants
         let predicate = NSPredicate(format: "\(ProductVariant_CD.PersistedField.productId) == '\(productID)'")
-        let old = await productVariantStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
+        let old = await productVariantStore.getList(predicate: predicate).map({$0.id})
         let _store = productVariantStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
@@ -119,7 +119,7 @@ extension ProductRepositoryImpl {
         guard let predicate = makeSearchPredicateForCategories(categoryIds: categoryIds) else {
             return
         }
-        let old = await productsStore.getList(predicate: predicate, sortedByKeyPath: "", ascending: true).map({$0.id})
+        let old = await productsStore.getList(predicate: predicate).map({$0.id})
         let _store = productsStore
         await _store.bulkWrite(operations: [
             {await _store.delete(old)},
