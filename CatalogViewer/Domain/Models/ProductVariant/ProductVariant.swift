@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DevToolsCore
 
 public struct ProductVariant {
     public let id: String
@@ -16,7 +17,7 @@ public struct ProductVariant {
     let colorCode: String
     let colorCode2: String
     let image: String
-    let price: Double
+    let price: Money
     let inStock: Bool
 }
 

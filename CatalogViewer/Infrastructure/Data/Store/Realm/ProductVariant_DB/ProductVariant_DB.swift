@@ -19,7 +19,7 @@ public class ProductVariant_DB: Object {
     @Persisted var colorCode: String
     @Persisted var colorCode2: String
     @Persisted var image: String
-    @Persisted var price: Double
+    @Persisted var price: Decimal128
     @Persisted var inStock: Bool
     
 }

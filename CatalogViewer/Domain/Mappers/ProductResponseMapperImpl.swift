@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import DevToolsCore
 
 protocol ProductResponseMapper {
     func map(response: ProductsResponse) -> [Product]
@@ -22,7 +23,7 @@ extension ProductResponseMapperImpl: ProductResponseMapper {
         let items: [ProductVariant] = (response.result?.variants?.map { item in
             ProductVariant(id: "\(item.id ?? 0)", productId: "\(item.product_id ?? 0)", name: item.name ?? "",
                            size: item.size ?? "", color: item.color ?? "", colorCode: item.color_code ?? "",
-                           colorCode2: item.color_code2 ?? "", image: item.image ?? "", price: item.price ?? 0, inStock: item.in_stock ?? false)
+                           colorCode2: item.color_code2 ?? "", image: item.image ?? "", price: Money(item.price ?? 0), inStock: item.in_stock ?? false)
         }) ?? []
         return items
     }

@@ -24,7 +24,7 @@ extension ProductVariant_CD: PersistedModelProtocol {
 
     public func toDomain(fields: Set<PersistedField>) throws -> ProductVariant {
         // TODO: Throw errors etc
-        return .init(id: self.id ?? "", productId: self.productId ?? "", name: self.name ?? "", size: self.size ?? "", color: self.color ?? "", colorCode: self.colorCode ?? "", colorCode2: self.colorCode2 ?? "", image: self.image ?? "", price: self.price , inStock: self.inStock)
+        return .init(id: self.id ?? "", productId: self.productId ?? "", name: self.name ?? "", size: self.size ?? "", color: self.color ?? "", colorCode: self.colorCode ?? "", colorCode2: self.colorCode2 ?? "", image: self.image ?? "", price: self.price! as Money , inStock: self.inStock)
     }
 
     public func update(with model: ProductVariant, fields: Set<PersistedField>) {
@@ -36,7 +36,7 @@ extension ProductVariant_CD: PersistedModelProtocol {
         self.colorCode = model.colorCode
         self.colorCode2 = model.colorCode2
         self.image = model.image
-        self.price = model.price
+        self.price = (model.price) as NSDecimalNumber
         self.inStock = model.inStock
     }
 }
