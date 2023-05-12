@@ -27,7 +27,10 @@ class CatalogProviderImpl {
     
 }
 
-// MARK: CatalogProviderProtocol
+// MARK: CatalogProvider
+
+// TODO: Convert to async all completion handlers
+// TODO: Make data handler more generic to support generic response and errors
 
 extension CatalogProviderImpl: CatalogProvider {
     func getRemoteProductDetails(productID: String, completion: @escaping (Result<ProductDetailsResponse, CatalogProviderError>) -> ()) {
