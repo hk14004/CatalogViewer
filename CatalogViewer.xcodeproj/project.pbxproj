@@ -24,7 +24,6 @@
 		D40BC31529CEF73500B4A1E2 /* CatalogProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC31429CEF73500B4A1E2 /* CatalogProvider.swift */; };
 		D40BC31829CEF7B900B4A1E2 /* CategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC31729CEF7B900B4A1E2 /* CategoriesResponse.swift */; };
 		D40BC31A29CEFAE300B4A1E2 /* CatalogTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC31929CEFAE300B4A1E2 /* CatalogTarget.swift */; };
-		D40BC31F29CEFC1300B4A1E2 /* Hosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC31E29CEFC1300B4A1E2 /* Hosts.swift */; };
 		D40BC32429CF09F000B4A1E2 /* CategoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC32329CF09F000B4A1E2 /* CategoryRepository.swift */; };
 		D40BC32829CF0E2700B4A1E2 /* Product_DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC32729CF0E2700B4A1E2 /* Product_DB.swift */; };
 		D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC32929CF0EF000B4A1E2 /* Product_DB + PersistedModelProtocol.swift */; };
@@ -38,12 +37,6 @@
 		D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
 		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
 		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
-		D45418112A0FD21C0030FBFD /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454180A2A0FD21C0030FBFD /* DependencyProvider.swift */; };
-		D45418122A0FD21C0030FBFD /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454180C2A0FD21C0030FBFD /* RepositoryAssembly.swift */; };
-		D45418132A0FD21C0030FBFD /* DataMapperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454180D2A0FD21C0030FBFD /* DataMapperAssembly.swift */; };
-		D45418142A0FD21C0030FBFD /* PersistentCoreDataStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454180E2A0FD21C0030FBFD /* PersistentCoreDataStoreAssembly.swift */; };
-		D45418152A0FD21C0030FBFD /* PersistentRealmStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D454180F2A0FD21C0030FBFD /* PersistentRealmStoreAssembly.swift */; };
-		D45418162A0FD21C0030FBFD /* DataProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45418102A0FD21C0030FBFD /* DataProviderAssembly.swift */; };
 		D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D491419E29E19D1B004E6DED /* DevToolsCoreData */; };
 		D49141A129E19D1B004E6DED /* DevToolsNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A029E19D1B004E6DED /* DevToolsNavigation */; };
 		D49141A329E19D1B004E6DED /* DevToolsNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = D49141A229E19D1B004E6DED /* DevToolsNetworking */; };
@@ -87,7 +80,6 @@
 		D40BC31429CEF73500B4A1E2 /* CatalogProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogProvider.swift; sourceTree = "<group>"; };
 		D40BC31729CEF7B900B4A1E2 /* CategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesResponse.swift; sourceTree = "<group>"; };
 		D40BC31929CEFAE300B4A1E2 /* CatalogTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTarget.swift; sourceTree = "<group>"; };
-		D40BC31E29CEFC1300B4A1E2 /* Hosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hosts.swift; sourceTree = "<group>"; };
 		D40BC32329CF09F000B4A1E2 /* CategoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRepository.swift; sourceTree = "<group>"; };
 		D40BC32729CF0E2700B4A1E2 /* Product_DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product_DB.swift; sourceTree = "<group>"; };
 		D40BC32929CF0EF000B4A1E2 /* Product_DB + PersistedModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Product_DB + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
@@ -100,12 +92,6 @@
 		D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
-		D454180A2A0FD21C0030FBFD /* DependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
-		D454180C2A0FD21C0030FBFD /* RepositoryAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
-		D454180D2A0FD21C0030FBFD /* DataMapperAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMapperAssembly.swift; sourceTree = "<group>"; };
-		D454180E2A0FD21C0030FBFD /* PersistentCoreDataStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentCoreDataStoreAssembly.swift; sourceTree = "<group>"; };
-		D454180F2A0FD21C0030FBFD /* PersistentRealmStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentRealmStoreAssembly.swift; sourceTree = "<group>"; };
-		D45418102A0FD21C0030FBFD /* DataProviderAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderAssembly.swift; sourceTree = "<group>"; };
 		D4A2451029D598580030C651 /* ProductScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenView.swift; sourceTree = "<group>"; };
 		D4A2451229D598670030C651 /* ProductScreenVMImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenVMImpl.swift; sourceTree = "<group>"; };
 		D4B6927129D5FB9100956D9A /* ProductDetailsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailsResponse.swift; sourceTree = "<group>"; };
@@ -165,7 +151,6 @@
 			children = (
 				D40BC2D029CE1E1300B4A1E2 /* AppDelegate.swift */,
 				D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */,
-				D40BC31B29CEFBC800B4A1E2 /* Config */,
 				D4C5C25B2A0D6CC9003862D8 /* Presentation */,
 				D4C5C26A2A0D82AC003862D8 /* Domain */,
 				D4C5C26B2A0D82B9003862D8 /* Infrastructure */,
@@ -304,15 +289,6 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
-		D40BC31B29CEFBC800B4A1E2 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				D40BC34929D2050000B4A1E2 /* Constants */,
-				D45418092A0FD21C0030FBFD /* Dependencies */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
 		D40BC32229CF09BD00B4A1E2 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
@@ -372,14 +348,6 @@
 			path = MiscViews;
 			sourceTree = "<group>";
 		};
-		D40BC34929D2050000B4A1E2 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				D4C5C25C2A0D6F7E003862D8 /* Hosts */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
 		D40F3EEF29E083A1007558B6 /* ProductVariant_CD */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,27 +400,6 @@
 			path = Category_CD;
 			sourceTree = "<group>";
 		};
-		D45418092A0FD21C0030FBFD /* Dependencies */ = {
-			isa = PBXGroup;
-			children = (
-				D454180A2A0FD21C0030FBFD /* DependencyProvider.swift */,
-				D454180B2A0FD21C0030FBFD /* Assemblies */,
-			);
-			path = Dependencies;
-			sourceTree = "<group>";
-		};
-		D454180B2A0FD21C0030FBFD /* Assemblies */ = {
-			isa = PBXGroup;
-			children = (
-				D454180C2A0FD21C0030FBFD /* RepositoryAssembly.swift */,
-				D454180D2A0FD21C0030FBFD /* DataMapperAssembly.swift */,
-				D454180E2A0FD21C0030FBFD /* PersistentCoreDataStoreAssembly.swift */,
-				D454180F2A0FD21C0030FBFD /* PersistentRealmStoreAssembly.swift */,
-				D45418102A0FD21C0030FBFD /* DataProviderAssembly.swift */,
-			);
-			path = Assemblies;
-			sourceTree = "<group>";
-		};
 		D4A2450F29D598230030C651 /* Product */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,14 +444,6 @@
 				D40BC2F829CE286000B4A1E2 /* Navigation */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		D4C5C25C2A0D6F7E003862D8 /* Hosts */ = {
-			isa = PBXGroup;
-			children = (
-				D40BC31E29CEFC1300B4A1E2 /* Hosts.swift */,
-			);
-			path = Hosts;
 			sourceTree = "<group>";
 		};
 		D4C5C26A2A0D82AC003862D8 /* Domain */ = {
@@ -701,7 +640,6 @@
 				D4C5C2832A0D967A003862D8 /* CategoriesScreenPreview.swift in Sources */,
 				D4C5C2852A0D9B40003862D8 /* CategoryProductsScreenCommon.swift in Sources */,
 				D4B6927C29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift in Sources */,
-				D45418162A0FD21C0030FBFD /* DataProviderAssembly.swift in Sources */,
 				D40BC30E29CE487300B4A1E2 /* String + ext.swift in Sources */,
 				D40BC31829CEF7B900B4A1E2 /* CategoriesResponse.swift in Sources */,
 				D40BC2FA29CE288300B4A1E2 /* AppCoordinator.swift in Sources */,
@@ -711,8 +649,6 @@
 				D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */,
 				D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */,
 				D4C5C27F2A0D95DF003862D8 /* CategoriesScreenCommon.swift in Sources */,
-				D45418132A0FD21C0030FBFD /* DataMapperAssembly.swift in Sources */,
-				D45418112A0FD21C0030FBFD /* DependencyProvider.swift in Sources */,
 				D40BC33529CF15EF00B4A1E2 /* ProductRepository.swift in Sources */,
 				D40BC34429CF558400B4A1E2 /* ProductResponseMapperImpl.swift in Sources */,
 				D40BC31529CEF73500B4A1E2 /* CatalogProvider.swift in Sources */,
@@ -722,23 +658,19 @@
 				D4C5C2742A0D8668003862D8 /* CatalogProviderImpl.swift in Sources */,
 				D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32F29CF11E600B4A1E2 /* Category_DB.swift in Sources */,
-				D45418122A0FD21C0030FBFD /* RepositoryAssembly.swift in Sources */,
 				D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */,
 				D4A2451329D598670030C651 /* ProductScreenVMImpl.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
 				D4C5C29E2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld in Sources */,
 				D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */,
 				D4B6927F29D6218B00956D9A /* CategoryResponseMapperImpl.swift in Sources */,
-				D45418142A0FD21C0030FBFD /* PersistentCoreDataStoreAssembly.swift in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVMImpl.swift in Sources */,
 				D4C5C2872A0D9F26003862D8 /* CategoryProductsScreenPreview.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
-				D45418152A0FD21C0030FBFD /* PersistentRealmStoreAssembly.swift in Sources */,
 				D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */,
 				D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */,
 				D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */,
 				D4C5C28B2A0DA1BB003862D8 /* ProductScreenPreview.swift in Sources */,
-				D40BC31F29CEFC1300B4A1E2 /* Hosts.swift in Sources */,
 				D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC33D29CF37CD00B4A1E2 /* ProductsResponse.swift in Sources */,
 				D40BC32829CF0E2700B4A1E2 /* Product_DB.swift in Sources */,
