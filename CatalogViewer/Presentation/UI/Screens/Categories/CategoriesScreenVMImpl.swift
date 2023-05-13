@@ -61,7 +61,7 @@ extension CategoriesScreenVMImpl {
             // Load DB cache and display again, this time we know if there is no data
             await updateCategoriesSection()
             // Observe and react to DB changes
-            //            observeCachedData()
+            observeCachedData()
         }
     }
     

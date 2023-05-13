@@ -62,7 +62,7 @@ extension CategoryProductsScreenVMImpl {
             // Load DB cache and display again, this time we know if there is no data
             await updateProductsSection()
             // Observe and react to DB changes
-//            observeCachedData()
+            observeCachedData()
         }
     }
     
@@ -133,7 +133,7 @@ extension CategoryProductsScreenVMImpl {
             
         }()
         let section = CategoryProductsScreenSection(identifier: CategoryProductsScreenSection.Identifier.productsGrid,
-                              title: "Featured", cells: cells)
+                                                    title: "Featured", cells: cells)
         return section
     }
     
