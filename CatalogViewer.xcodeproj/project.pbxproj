@@ -36,6 +36,7 @@
 		D40BC34429CF558400B4A1E2 /* ProductResponseMapperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34329CF558400B4A1E2 /* ProductResponseMapperImpl.swift */; };
 		D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */; };
 		D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
+		D434634E2A0FC8B700B4AC18 /* PersistentCoreDataStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D434634D2A0FC8B700B4AC18 /* PersistentCoreDataStoreAssembly.swift */; };
 		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
 		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
 		D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D491419E29E19D1B004E6DED /* DevToolsCoreData */; };
@@ -97,6 +98,7 @@
 		D40BC34329CF558400B4A1E2 /* ProductResponseMapperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseMapperImpl.swift; sourceTree = "<group>"; };
 		D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuchEmptyView.swift; sourceTree = "<group>"; };
 		D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
+		D434634D2A0FC8B700B4AC18 /* PersistentCoreDataStoreAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentCoreDataStoreAssembly.swift; sourceTree = "<group>"; };
 		D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D4A2451029D598580030C651 /* ProductScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenView.swift; sourceTree = "<group>"; };
@@ -605,6 +607,7 @@
 				D4C5C2922A0DA8B6003862D8 /* DataMapperAssembly.swift */,
 				D4C5C2942A0DA8B6003862D8 /* PersistentRealmStoreAssembly.swift */,
 				D4C5C2952A0DA8B6003862D8 /* DataProviderAssembly.swift */,
+				D434634D2A0FC8B700B4AC18 /* PersistentCoreDataStoreAssembly.swift */,
 			);
 			path = Assemblies;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 				D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */,
 				D4C5C28B2A0DA1BB003862D8 /* ProductScreenPreview.swift in Sources */,
 				D40BC31F29CEFC1300B4A1E2 /* Hosts.swift in Sources */,
+				D434634E2A0FC8B700B4AC18 /* PersistentCoreDataStoreAssembly.swift in Sources */,
 				D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC33D29CF37CD00B4A1E2 /* ProductsResponse.swift in Sources */,
 				D40BC32829CF0E2700B4A1E2 /* Product_DB.swift in Sources */,
