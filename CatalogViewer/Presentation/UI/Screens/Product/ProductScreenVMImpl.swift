@@ -48,12 +48,12 @@ extension ProductScreenVMImpl {
         bag.productHandle = productsRepository.observeProduct(id: product.id)
             .dropFirst()
             .removeDuplicates()
-            .sink(receiveValue: { [unowned self] _product in
+            .sink(receiveValue: { [weak self] _product in
                 guard let _product = _product else {
                     // TODO: Perhaps show message that product is no longer available and leave
                     return
                 }
-                product = _product
+                self?.product = _product
         })
     }
 }
