@@ -209,9 +209,9 @@
 		D40BC2CF29CE1E1300B4A1E2 /* CatalogViewer */ = {
 			isa = PBXGroup;
 			children = (
-				D40447C52A0FD35200618D7A /* Config */,
 				D40BC2D029CE1E1300B4A1E2 /* AppDelegate.swift */,
 				D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */,
+				D40447C52A0FD35200618D7A /* Config */,
 				D4C5C25B2A0D6CC9003862D8 /* Presentation */,
 				D4C5C26A2A0D82AC003862D8 /* Domain */,
 				D4C5C26B2A0D82B9003862D8 /* Infrastructure */,
