@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40447D12A0FD35200618D7A /* Hosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447C82A0FD35200618D7A /* Hosts.swift */; };
+		D40447D22A0FD35200618D7A /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447CA2A0FD35200618D7A /* DependencyProvider.swift */; };
+		D40447D32A0FD35200618D7A /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447CC2A0FD35200618D7A /* RepositoryAssembly.swift */; };
+		D40447D42A0FD35200618D7A /* DataMapperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447CD2A0FD35200618D7A /* DataMapperAssembly.swift */; };
+		D40447D52A0FD35200618D7A /* PersistentCoreDataStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447CE2A0FD35200618D7A /* PersistentCoreDataStoreAssembly.swift */; };
+		D40447D62A0FD35200618D7A /* PersistentRealmStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447CF2A0FD35200618D7A /* PersistentRealmStoreAssembly.swift */; };
+		D40447D72A0FD35200618D7A /* DataProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40447D02A0FD35200618D7A /* DataProviderAssembly.swift */; };
 		D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2D029CE1E1300B4A1E2 /* AppDelegate.swift */; };
 		D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */; };
 		D40BC2DA29CE1E1400B4A1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40BC2D929CE1E1400B4A1E2 /* Assets.xcassets */; };
@@ -62,6 +69,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D40447C82A0FD35200618D7A /* Hosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hosts.swift; sourceTree = "<group>"; };
+		D40447CA2A0FD35200618D7A /* DependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
+		D40447CC2A0FD35200618D7A /* RepositoryAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
+		D40447CD2A0FD35200618D7A /* DataMapperAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMapperAssembly.swift; sourceTree = "<group>"; };
+		D40447CE2A0FD35200618D7A /* PersistentCoreDataStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentCoreDataStoreAssembly.swift; sourceTree = "<group>"; };
+		D40447CF2A0FD35200618D7A /* PersistentRealmStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentRealmStoreAssembly.swift; sourceTree = "<group>"; };
+		D40447D02A0FD35200618D7A /* DataProviderAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderAssembly.swift; sourceTree = "<group>"; };
 		D40BC2CD29CE1E1300B4A1E2 /* CatalogViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatalogViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40BC2D029CE1E1300B4A1E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +143,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D40447C52A0FD35200618D7A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				D40447C62A0FD35200618D7A /* Constants */,
+				D40447C92A0FD35200618D7A /* Dependencies */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		D40447C62A0FD35200618D7A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D40447C72A0FD35200618D7A /* Hosts */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		D40447C72A0FD35200618D7A /* Hosts */ = {
+			isa = PBXGroup;
+			children = (
+				D40447C82A0FD35200618D7A /* Hosts.swift */,
+			);
+			path = Hosts;
+			sourceTree = "<group>";
+		};
+		D40447C92A0FD35200618D7A /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				D40447CA2A0FD35200618D7A /* DependencyProvider.swift */,
+				D40447CB2A0FD35200618D7A /* Assemblies */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		D40447CB2A0FD35200618D7A /* Assemblies */ = {
+			isa = PBXGroup;
+			children = (
+				D40447CC2A0FD35200618D7A /* RepositoryAssembly.swift */,
+				D40447CD2A0FD35200618D7A /* DataMapperAssembly.swift */,
+				D40447CE2A0FD35200618D7A /* PersistentCoreDataStoreAssembly.swift */,
+				D40447CF2A0FD35200618D7A /* PersistentRealmStoreAssembly.swift */,
+				D40447D02A0FD35200618D7A /* DataProviderAssembly.swift */,
+			);
+			path = Assemblies;
+			sourceTree = "<group>";
+		};
 		D40BC2C429CE1E1300B4A1E2 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +209,7 @@
 		D40BC2CF29CE1E1300B4A1E2 /* CatalogViewer */ = {
 			isa = PBXGroup;
 			children = (
+				D40447C52A0FD35200618D7A /* Config */,
 				D40BC2D029CE1E1300B4A1E2 /* AppDelegate.swift */,
 				D40BC2D229CE1E1300B4A1E2 /* SceneDelegate.swift */,
 				D4C5C25B2A0D6CC9003862D8 /* Presentation */,
@@ -640,6 +701,7 @@
 				D4C5C2832A0D967A003862D8 /* CategoriesScreenPreview.swift in Sources */,
 				D4C5C2852A0D9B40003862D8 /* CategoryProductsScreenCommon.swift in Sources */,
 				D4B6927C29D6032700956D9A /* ProductVariant_DB + PersistedModelProtocol.swift in Sources */,
+				D40447D72A0FD35200618D7A /* DataProviderAssembly.swift in Sources */,
 				D40BC30E29CE487300B4A1E2 /* String + ext.swift in Sources */,
 				D40BC31829CEF7B900B4A1E2 /* CategoriesResponse.swift in Sources */,
 				D40BC2FA29CE288300B4A1E2 /* AppCoordinator.swift in Sources */,
@@ -649,6 +711,8 @@
 				D40BC2D129CE1E1300B4A1E2 /* AppDelegate.swift in Sources */,
 				D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */,
 				D4C5C27F2A0D95DF003862D8 /* CategoriesScreenCommon.swift in Sources */,
+				D40447D42A0FD35200618D7A /* DataMapperAssembly.swift in Sources */,
+				D40447D22A0FD35200618D7A /* DependencyProvider.swift in Sources */,
 				D40BC33529CF15EF00B4A1E2 /* ProductRepository.swift in Sources */,
 				D40BC34429CF558400B4A1E2 /* ProductResponseMapperImpl.swift in Sources */,
 				D40BC31529CEF73500B4A1E2 /* CatalogProvider.swift in Sources */,
@@ -658,17 +722,21 @@
 				D4C5C2742A0D8668003862D8 /* CatalogProviderImpl.swift in Sources */,
 				D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */,
 				D40BC32F29CF11E600B4A1E2 /* Category_DB.swift in Sources */,
+				D40447D32A0FD35200618D7A /* RepositoryAssembly.swift in Sources */,
 				D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */,
 				D4A2451329D598670030C651 /* ProductScreenVMImpl.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
 				D4C5C29E2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld in Sources */,
 				D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */,
 				D4B6927F29D6218B00956D9A /* CategoryResponseMapperImpl.swift in Sources */,
+				D40447D52A0FD35200618D7A /* PersistentCoreDataStoreAssembly.swift in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVMImpl.swift in Sources */,
 				D4C5C2872A0D9F26003862D8 /* CategoryProductsScreenPreview.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
+				D40447D62A0FD35200618D7A /* PersistentRealmStoreAssembly.swift in Sources */,
 				D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */,
 				D4A2451129D598580030C651 /* ProductScreenView.swift in Sources */,
+				D40447D12A0FD35200618D7A /* Hosts.swift in Sources */,
 				D40BC2D329CE1E1300B4A1E2 /* SceneDelegate.swift in Sources */,
 				D4C5C28B2A0DA1BB003862D8 /* ProductScreenPreview.swift in Sources */,
 				D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */,
