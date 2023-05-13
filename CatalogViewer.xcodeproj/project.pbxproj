@@ -62,7 +62,6 @@
 		D4C5C2962A0DA8B6003862D8 /* DependencyProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C28F2A0DA8B6003862D8 /* DependencyProvider.swift */; };
 		D4C5C2972A0DA8B6003862D8 /* RepositoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2912A0DA8B6003862D8 /* RepositoryAssembly.swift */; };
 		D4C5C2982A0DA8B6003862D8 /* DataMapperAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2922A0DA8B6003862D8 /* DataMapperAssembly.swift */; };
-		D4C5C2992A0DA8B6003862D8 /* PersistentCoreDataStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2932A0DA8B6003862D8 /* PersistentCoreDataStoreAssembly.swift */; };
 		D4C5C29A2A0DA8B6003862D8 /* PersistentRealmStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2942A0DA8B6003862D8 /* PersistentRealmStoreAssembly.swift */; };
 		D4C5C29B2A0DA8B6003862D8 /* DataProviderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2952A0DA8B6003862D8 /* DataProviderAssembly.swift */; };
 		D4C5C29E2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C29C2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld */; };
@@ -119,7 +118,6 @@
 		D4C5C28F2A0DA8B6003862D8 /* DependencyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyProvider.swift; sourceTree = "<group>"; };
 		D4C5C2912A0DA8B6003862D8 /* RepositoryAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryAssembly.swift; sourceTree = "<group>"; };
 		D4C5C2922A0DA8B6003862D8 /* DataMapperAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataMapperAssembly.swift; sourceTree = "<group>"; };
-		D4C5C2932A0DA8B6003862D8 /* PersistentCoreDataStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentCoreDataStoreAssembly.swift; sourceTree = "<group>"; };
 		D4C5C2942A0DA8B6003862D8 /* PersistentRealmStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentRealmStoreAssembly.swift; sourceTree = "<group>"; };
 		D4C5C2952A0DA8B6003862D8 /* DataProviderAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProviderAssembly.swift; sourceTree = "<group>"; };
 		D4C5C29D2A0DA9D4003862D8 /* DatabaseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DatabaseModel.xcdatamodel; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 			children = (
 				D4C5C2912A0DA8B6003862D8 /* RepositoryAssembly.swift */,
 				D4C5C2922A0DA8B6003862D8 /* DataMapperAssembly.swift */,
-				D4C5C2932A0DA8B6003862D8 /* PersistentCoreDataStoreAssembly.swift */,
 				D4C5C2942A0DA8B6003862D8 /* PersistentRealmStoreAssembly.swift */,
 				D4C5C2952A0DA8B6003862D8 /* DataProviderAssembly.swift */,
 			);
@@ -730,7 +727,6 @@
 				D4C5C29E2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld in Sources */,
 				D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */,
 				D4B6927F29D6218B00956D9A /* CategoryResponseMapperImpl.swift in Sources */,
-				D4C5C2992A0DA8B6003862D8 /* PersistentCoreDataStoreAssembly.swift in Sources */,
 				D40BC30229CE2CBB00B4A1E2 /* CategoriesScreenVMImpl.swift in Sources */,
 				D4C5C2872A0D9F26003862D8 /* CategoryProductsScreenPreview.swift in Sources */,
 				D40BC30429CE2CD500B4A1E2 /* CategoriesScreenView.swift in Sources */,
