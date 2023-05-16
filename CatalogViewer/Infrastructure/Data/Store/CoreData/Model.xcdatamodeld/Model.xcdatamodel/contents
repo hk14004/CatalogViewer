@@ -27,7 +27,7 @@
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="inStock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="productId" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="String"/>
     </entity>

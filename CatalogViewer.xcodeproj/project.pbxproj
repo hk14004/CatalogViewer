@@ -42,6 +42,7 @@
 		D40BC34429CF558400B4A1E2 /* ProductResponseMapperImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34329CF558400B4A1E2 /* ProductResponseMapperImpl.swift */; };
 		D40BC34729CF75D100B4A1E2 /* SuchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */; };
 		D415D8AC29E08AD700129E36 /* ProductVariant_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */; };
+		D41DE69B2A13FD2B00F4857A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D41DE6992A13FD2B00F4857A /* Model.xcdatamodeld */; };
 		D44668F629E07342005B2984 /* Product_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */; };
 		D44668FA29E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */; };
 		D491419F29E19D1B004E6DED /* DevToolsCoreData in Frameworks */ = {isa = PBXBuildFile; productRef = D491419E29E19D1B004E6DED /* DevToolsCoreData */; };
@@ -65,7 +66,6 @@
 		D4C5C2872A0D9F26003862D8 /* CategoryProductsScreenPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2862A0D9F26003862D8 /* CategoryProductsScreenPreview.swift */; };
 		D4C5C2892A0DA1AF003862D8 /* ProductScreenCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C2882A0DA1AF003862D8 /* ProductScreenCommon.swift */; };
 		D4C5C28B2A0DA1BB003862D8 /* ProductScreenPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C28A2A0DA1BB003862D8 /* ProductScreenPreview.swift */; };
-		D4C5C29E2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4C5C29C2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +104,7 @@
 		D40BC34329CF558400B4A1E2 /* ProductResponseMapperImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResponseMapperImpl.swift; sourceTree = "<group>"; };
 		D40BC34629CF75D100B4A1E2 /* SuchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuchEmptyView.swift; sourceTree = "<group>"; };
 		D40F3EED29E0839A007558B6 /* ProductVariant_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ProductVariant_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
+		D41DE69A2A13FD2B00F4857A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D44668F529E07342005B2984 /* Product_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Product_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D44668F929E073CE005B2984 /* Category_CD + PersistedModelProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Category_CD + PersistedModelProtocol.swift"; sourceTree = "<group>"; };
 		D4A2451029D598580030C651 /* ProductScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductScreenView.swift; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		D4C5C2862A0D9F26003862D8 /* CategoryProductsScreenPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProductsScreenPreview.swift; sourceTree = "<group>"; };
 		D4C5C2882A0DA1AF003862D8 /* ProductScreenCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreenCommon.swift; sourceTree = "<group>"; };
 		D4C5C28A2A0DA1BB003862D8 /* ProductScreenPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreenPreview.swift; sourceTree = "<group>"; };
-		D4C5C29D2A0DA9D4003862D8 /* DatabaseModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DatabaseModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -437,7 +437,7 @@
 		D44668F429E0731A005B2984 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				D4C5C29C2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld */,
+				D41DE6992A13FD2B00F4857A /* Model.xcdatamodeld */,
 				D44668F729E07349005B2984 /* Product_CD */,
 				D40F3EEF29E083A1007558B6 /* ProductVariant_CD */,
 				D44668F829E073BC005B2984 /* Category_CD */,
@@ -726,7 +726,6 @@
 				D40BC32A29CF0EF100B4A1E2 /* Product_DB + PersistedModelProtocol.swift in Sources */,
 				D4A2451329D598670030C651 /* ProductScreenVMImpl.swift in Sources */,
 				D40BC2F729CE261A00B4A1E2 /* Product.swift in Sources */,
-				D4C5C29E2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld in Sources */,
 				D4B6927A29D6031C00956D9A /* ProductVariant_DB.swift in Sources */,
 				D4B6927F29D6218B00956D9A /* CategoryResponseMapperImpl.swift in Sources */,
 				D40447D52A0FD35200618D7A /* PersistentCoreDataStoreAssembly.swift in Sources */,
@@ -743,6 +742,7 @@
 				D40BC33D29CF37CD00B4A1E2 /* ProductsResponse.swift in Sources */,
 				D40BC32829CF0E2700B4A1E2 /* Product_DB.swift in Sources */,
 				D40BC2F429CE259800B4A1E2 /* Category.swift in Sources */,
+				D41DE69B2A13FD2B00F4857A /* Model.xcdatamodeld in Sources */,
 				D40BC2FD29CE29BA00B4A1E2 /* CategoriesCoordinator.swift in Sources */,
 				D4C5C2792A0D9141003862D8 /* CategoryRepositoryImpl.swift in Sources */,
 			);
@@ -1027,14 +1027,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		D4C5C29C2A0DA9D4003862D8 /* DatabaseModel.xcdatamodeld */ = {
+		D41DE6992A13FD2B00F4857A /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D4C5C29D2A0DA9D4003862D8 /* DatabaseModel.xcdatamodel */,
+				D41DE69A2A13FD2B00F4857A /* Model.xcdatamodel */,
 			);
-			currentVersion = D4C5C29D2A0DA9D4003862D8 /* DatabaseModel.xcdatamodel */;
-			name = DatabaseModel.xcdatamodeld;
-			path = ../../../../../../../../.Trash/CatalogViewer/Infrastructure/Data/Store/CoreData/DatabaseModel.xcdatamodeld;
+			currentVersion = D41DE69A2A13FD2B00F4857A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -40,7 +40,7 @@ extension Product_CD: PersistedModelProtocol {
         self.brand = model.brand
         self.model = model.model
         self.image = model.image
-        self.variantCount = Int16(model.variantCount)
+        self.variantCount = Int64(model.variantCount)
         self.currencyID = model.currencyID
     }
 }
